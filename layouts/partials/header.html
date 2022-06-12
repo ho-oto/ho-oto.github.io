@@ -1,0 +1,23 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="
+    {{- with .Description -}} {{- . -}} {{- else -}}
+        {{- if .IsPage -}} {{- .Summary -}} {{- else -}}
+            {{- with .Site.Params.description -}} {{- . -}} {{- end -}}
+        {{- end -}}
+    {{- end -}}" />
+    <title>
+        {{- if .IsHome -}}
+        {{ .Site.Title }} | Home
+        {{- else -}}
+        {{ .Title }} - {{ .Site.Title }}
+        {{- end -}}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/main.css" disabled />
+    <link id="darkModeStyle" rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/dark.css" disabled />
+    {{- with .Site.Params.favicon }}
+    <link rel="icon" type="image/png" href="{{ . }}" />
+    {{- end }}
+</head>

@@ -1,0 +1,23 @@
+<header>
+    <div class="main">
+        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    </div>
+    <nav>
+        {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }} &loz; <a id="dark-mode-toggle"
+            onclick="toggleTheme()" href=""></a>
+        <script>
+            let setTheme = mode => {
+                localStorage.setItem("theme-storage", mode);
+                document.getElementById("darkModeStyle").disabled = mode !== "dark";
+                document.getElementById("dark-mode-toggle").innerHTML = mode === "dark" ? "&#x263C;" : "&#x263D;";
+            }
+            let toggleTheme = () => {
+                switch (localStorage.getItem("theme-storage")) {
+                    case "light": setTheme("dark"); break;
+                    case "dark": setTheme("light"); break;
+                }
+            }
+            setTheme(localStorage.getItem("theme-storage") || "light");
+        </script>
+    </nav>
+</header>

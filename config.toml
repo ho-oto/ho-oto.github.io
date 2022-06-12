@@ -1,0 +1,39 @@
+baseURL = 'http://example.org/'
+languageCode = 'ja'
+title = 'My New Hugo Site'
+copyright = "© Hayate Nakano"
+
+[params]
+subtitle = "blog theme for Hugo"
+
+[[params.social]]
+name = "GitHub"
+url = "https://github.com/ho-oto"
+
+[[params.social]]
+name = "Twitter"
+url = "https://twitter.com/h8t0"
+
+[[params.social]]
+name = "GitLab"
+url = "https://gitlab.com/Ho-oto"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4

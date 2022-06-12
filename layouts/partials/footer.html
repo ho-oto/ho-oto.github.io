@@ -1,0 +1,9 @@
+<footer>
+    <div style="display:flex">
+        {{- range $index, $key := .Site.Params.Social -}}
+        <a class="soc" href="{{ $key.url }}">{{ $key.name }}</a>
+        {{- end -}}
+    </div>
+    <div class="footer-info">{{ with .Site.Copyright }}{{ . }}{{ end }} {{ dateFormat "2006" now }} | Built with <a
+            href="https://gohugo.io">Hugo</a></div>
+</footer>
