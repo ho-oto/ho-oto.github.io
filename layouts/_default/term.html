@@ -1,9 +1,5 @@
 {{ define "main" }}
-{{ with .Data.Term -}}
-<h1>tagged articles - "{{ . }}"</h1>
-{{ else -}}
-<h1>all articles</h1>
-{{ end -}}
+<h1>Tagged articles - "{{ .Data.Term }}"</h1>
 <ul class="posts">
     {{- range .Data.Pages }}
     {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) }}

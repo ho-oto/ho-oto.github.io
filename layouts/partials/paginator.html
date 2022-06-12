@@ -1,4 +1,4 @@
-{{ if gt $.Paginator.TotalPages 1 }}
+{{ if gt $.Paginator.TotalPages 1 -}}
 {{ $p := $.Paginator -}}
 <ul class="pagination">
     <span class="page-item page-prev">
@@ -12,4 +12,4 @@
         {{- end -}}
     </span>
 </ul>
-{{ end }}
+{{- end }}

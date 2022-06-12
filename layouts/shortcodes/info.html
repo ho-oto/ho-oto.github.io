@@ -1,5 +1,5 @@
 <div class="info">
-    {{- with .Get "title" }}<h3 class="warn-title">{{ . }}</h3>{{- end }}
+    {{ with .Get "title" }}<h3 class="warn-title">{{ . }}</h3>{{ end }}
     <div class="info-inner">
         {{ .Get "text" }}
     </div>

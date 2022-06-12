@@ -1,16 +1,13 @@
-{{- define "main" -}}
-{{- with .Data.Term -}}
-<h1>Tagged articles - "{{ . }}"</h1>
-{{- else -}}
+{{ define "main" }}
 <h1 class="page-title">All articles</h1>
-{{- end -}}
 <ul class="posts">
-    {{- range .Data.Pages -}}
-    {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type )) -}}
+    {{- range .Data.Pages }}
+    {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type )) }}
     <li class="post">
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span class="meta">{{ dateFormat "2006/1/2" .Date }}</span>
     </li>
-    {{- end -}}
-    {{- end -}}
+    {{- end }}
+    {{- end }}
 </ul>
-{{- end -}}
+{{ end }}
