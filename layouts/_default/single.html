@@ -1,35 +1,47 @@
 {{ define "main" }}
 <main>
-    <article>
-        <div class="title">
-            <h1 class="title">{{ .Title }}</h1>
-            <div class="meta">Posted on {{ dateFormat "2006/1/2" .Date }}</div>
-        </div>
-        {{- with .Params.tldr }}
-        <div class="tldr">
-            <strong>tl;dr: </strong>{{ . }}
-        </div>
+<article>
+
+<div class="title">
+    <h1 class="title">{{ .Title }}</h1>
+    <div class="meta">Posted on {{ dateFormat "2006/1/2" .Date }}</div>
+</div>
+
+{{ with .Params.tldr -}}
+<div class="tldr">
+    <strong>tl;dr: </strong>{{ . }}
+</div>
+{{- end }}
+
+<section class="body">
+{{ .Content -}}
+</section>
+
+<div class="post-tags">
+    {{- if and (ne .Type "page") (gt .Params.tags 0) }}
+    <nav class="nav tags">
+        <ul class="tag">
+            {{- range (.GetTerms "tags") }}
+            <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+            {{- end }}
+        </ul>
+    </nav>
+    {{- end }}
+    {{- if or .NextInSection .PrevInSection }}
+    <div class="pagination-in-post">
+        {{ with .PrevInSection -}}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        {{- else -}}
+        No Previous Post
+        {{- end }}{{ with .NextInSection -}}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        {{- else -}}
+        No Next Post
         {{- end }}
-        <section class="body">
-            {{ .Content -}}
-        </section>
-        <div class="post-tags">
-            {{- if and (ne .Type "page") (gt .Params.tags 0) }}
-            <nav class="nav tags">
-                <ul class="tag">
-                    {{- range (.GetTerms "tags") }}
-                    <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-                    {{- end }}
-                </ul>
-            </nav>
-            {{- end }}
-            {{- if or .NextInSection .PrevInSection }}
-            <div class="pagination-in-post">
-                {{ with .PrevInSection }}<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>{{ else }}No Previous Post{{ end }}
-                | {{ with .NextInSection }}<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>{{ else }}No Next Post{{ end }}
-            </div>
-            {{- end }}
-        </div>
-    </article>
+    </div>
+    {{- end }}
+</div>
+
+</article>
 </main>
 {{ end }}

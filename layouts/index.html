@@ -4,34 +4,38 @@
 {{ partial "header.html" . }}
 
 <body>
-    <div class="content">
-        {{ partial "head.html" . }}
-        <main class="list">
-            <div class="site-description">
-                {{- with .Site.Params.subtitle -}}
-                <p>{{ . | markdownify }}</p>
-                {{- end -}}
-            </div>
-            {{- $pages := where
-            (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
-            "Params.hidden" "ne" true }}
-            {{- $paginator := .Paginate $pages }}
-            {{- range $paginator.Pages }}
-            <section class="list-item">
-                <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-                <time>{{ dateFormat "2006/1/2" .Date }}</time>
-                <div class="description">
-                    {{- with .Params.description }}{{ . }}
-                    {{- else }}{{ .Summary }} &hellip;
-                    {{- end -}}
-                </div>
-                <a class="readmore" href="{{ .RelPermalink }}">Read more</a>
-            </section>
-            {{- end }}
-            {{ partial "paginator.html" . }}
-        </main>
-        {{ partial "footer.html" . }}
+<div class="content">
+
+{{ partial "head.html" . }}
+
+<main class="list">
+<div class="site-description">
+    {{- with .Site.Params.subtitle -}}
+    <p>{{ . | markdownify }}</p>
+    {{- end -}}
+</div>
+{{- $pages := where
+(where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
+"Params.hidden" "ne" true }}
+{{- $paginator := .Paginate $pages }}
+{{- range $paginator.Pages }}
+<section class="list-item">
+    <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+    <time>{{ dateFormat "2006/1/2" .Date }}</time>
+    <div class="description">
+        {{- with .Params.description }}{{ . }}
+        {{- else }}{{ .Summary }} &hellip;
+        {{- end -}}
     </div>
+    <a class="readmore" href="{{ .RelPermalink }}">Read more</a>
+</section>
+{{- end }}
+{{ partial "paginator.html" . }}
+</main>
+
+{{ partial "footer.html" . }}
+
+</div>
 </body>
 
 </html>
