@@ -1,13 +1,4 @@
 {{ define "main" }}
 <h1>Tagged articles - "{{ .Data.Term }}"</h1>
-<ul class="posts">
-    {{- range .Data.Pages }}
-    {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) }}
-    <li class="post">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <span class="meta">{{ dateFormat "2006/1/2" .Date }}</span>
-    </li>
-    {{- end }}
-    {{- end }}
-</ul>
+{{ partial "list.html" . }}
 {{ end }}
