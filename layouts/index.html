@@ -8,20 +8,22 @@
 
 {{ partial "head.html" . }}
 
-<main class="list">
 <div class="site-description">
     {{- with .Site.Params.subtitle -}}
     <p>{{ . | markdownify }}</p>
     {{- end -}}
 </div>
+<main class="list">
 {{- $pages := where
 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
 "Params.hidden" "ne" true }}
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
 <section class="list-item">
-    <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-    <time>{{ dateFormat "2006/1/2" .Date }}</time>
+    <div class="title-info">
+        <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <time>{{ dateFormat "2006/1/2" .Date }}</time>
+    </div>
     <div class="description">
         {{- with .Params.description }}{{ . }}
         {{- else }}{{ .Summary }} &hellip;
@@ -30,9 +32,8 @@
     <a class="readmore" href="{{ .RelPermalink }}">Read more</a>
 </section>
 {{- end }}
-{{ partial "paginator.html" . }}
 </main>
-
+{{ partial "paginator.html" . }}
 {{ partial "footer.html" . }}
 
 </div>
