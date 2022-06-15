@@ -3,12 +3,12 @@
         <a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
         <div class="site-description">
             {{- with .Site.Params.subtitle -}}
-            <p>{{ . | markdownify }}</p>
+            <span>{{ . | markdownify }}</span>
             {{- end -}}
         </div>
     </div>
     <nav>
-        {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }} &loz; <a id="dark-mode-toggle"
+        {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}<a id="dark-mode-toggle"
             onclick="toggleTheme()" href=""></a>
         <script>
             let setTheme = mode => {
