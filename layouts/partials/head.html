@@ -1,6 +1,11 @@
 <header>
     <div class="main">
-        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        <a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        <div class="site-description">
+            {{- with .Site.Params.subtitle -}}
+            <p>{{ . | markdownify }}</p>
+            {{- end -}}
+        </div>
     </div>
     <nav>
         {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }} &loz; <a id="dark-mode-toggle"

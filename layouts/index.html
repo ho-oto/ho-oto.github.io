@@ -8,11 +8,6 @@
 
 {{ partial "head.html" . }}
 
-<div class="site-description">
-    {{- with .Site.Params.subtitle -}}
-    <p>{{ . | markdownify }}</p>
-    {{- end -}}
-</div>
 <main class="list">
 {{- $pages := where
 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
@@ -20,20 +15,37 @@
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
 <section class="list-item">
-    <div class="title-info">
-        <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-        <time>{{ dateFormat "2006/1/2" .Date }}</time>
+    <div class="list-item-icon"></div>
+    <div class="list-item-body">
+        <div class="title-info">
+            <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+            <time>{{ dateFormat "2006/1/2" .Date }}</time>
+        </div>
+        <div class="description">
+            {{- with .Params.description }}{{ . }}
+            {{- else }}{{ .Summary }} &hellip;
+            {{- end -}}
+        </div>
     </div>
-    <div class="description">
-        {{- with .Params.description }}{{ . }}
-        {{- else }}{{ .Summary }} &hellip;
-        {{- end -}}
-    </div>
-    <a class="readmore" href="{{ .RelPermalink }}">Read more</a>
 </section>
 {{- end }}
 </main>
-{{ partial "paginator.html" . }}
+{{ if gt $.Paginator.TotalPages 1 -}}
+{{ $p := $.Paginator -}}
+<div class="pagination">
+    {{- if $p.HasPrev -}}
+    <a href="{{ $p.Prev.URL }}" class="page-link" aria-label="Previous"><span aria-hidden="true">&larr;</span></a>
+    {{- else -}}
+    <span class="disabled-link" aria-hidden="true">&larr;</span>
+    {{- end -}}
+    <span class="page-number">Page {{ $p.PageNumber }} of {{ $p.TotalPages }}</span>
+    {{- if $p.HasNext -}}
+    <a href="{{ $p.Next.URL }}" class="page-link" aria-label="Next"><span aria-hidden="true">&rarr;</span></a>
+    {{- else -}}
+    <span class="disabled-link" aria-hidden="true">&rarr;</span>
+    {{- end -}}
+</div>
+{{- end }}
 {{ partial "footer.html" . }}
 
 </div>

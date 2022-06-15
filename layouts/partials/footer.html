@@ -1,7 +1,7 @@
 <footer>
     {{ range $index, $key := .Site.Params.Social -}}
-    <a class="soc" href="{{ $key.url }}">{{ $key.name }}</a>
+    <a class="social" href="{{ $key.url }}">{{ $key.name }}</a>
     {{- end }}
     {{- with .Site.Copyright }}{{ . }} {{ end }}
-    {{- dateFormat "2006" now }}, Built with <a href="https://gohugo.io">Hugo</a>
+    {{- dateFormat "2006" now }}, Powered by <a href="https://gohugo.io">Hugo</a>
 </footer>

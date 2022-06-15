@@ -1,6 +1,7 @@
-html {
-    color: red;
-    font-family: 'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 15px;
-    line-height: 1.6em;
+:root {
+    --color-background: #0F1419;
+    --color-main: #1D9bF0;
+    --color-text: #FFFFFF;
+    --color-date: #71767B;
+    --color-disabled: #C3C4C5;
 }
