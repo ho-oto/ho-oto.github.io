@@ -322,6 +322,10 @@ article .title {
     margin-bottom: 1em;
 }
 
+h1.page-title {
+    margin-top: 1rem;
+}
+
 /*
 .info {
     background-color: dodgerblue;
