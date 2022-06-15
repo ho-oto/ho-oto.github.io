@@ -6,10 +6,15 @@
     --color-date: #71767B;
     --color-disabled: #C3C4C5;
     --color-border: #F3F3F3;
+    --color-warn: red;
 }
 
 /* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap');
+@font-face {
+    font-family: 'Noto Emoji';
+    font-style: normal;
+    src: url('../fonts/NotoEmoji-Regular.ttf');
+}
 
 html {
     color: var(--color-text);
@@ -326,20 +331,24 @@ h1.page-title {
     margin-top: 1rem;
 }
 
-/*
+
 .info {
-    background-color: dodgerblue;
-    color: #fff;
-    padding: 1em;
+    background-color: var(--color-main);
+    color: var(--color-text);
+    padding: 0rem;
+    margin: 0.5em;
 }
 
 .info p {
-    font-family: 'IBM Plex Mono', monospace;
     margin: 0;
 }
 
 .info a {
     border-bottom: 3px solid #fff;
+}
+
+.info h3::before {
+    content: none;
 }
 
 .info a:hover {
@@ -371,7 +380,7 @@ h1.page-title {
     display: flex;
     justify-content: space-between;
 }
-*/
+
 .tags li::before {
     content: "🏷 ";
     font: 'Noto Emoji';
