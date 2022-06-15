@@ -32,7 +32,7 @@
 </main>
 {{ if gt $.Paginator.TotalPages 1 -}}
 {{ $p := $.Paginator -}}
-<div class="pagination">
+<div class="pagination-in-index">
     {{- if $p.HasPrev -}}
     <a href="{{ $p.Prev.URL }}" class="page-link" aria-label="Previous"><span aria-hidden="true">&larr;</span></a>
     {{- else -}}
