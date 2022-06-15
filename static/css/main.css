@@ -1,18 +1,17 @@
 /* color */
 :root {
     --color-background: #FFFFFF;
-    --color-main: #1D9bF0;
+    --color-main: #1D9BF0;
     --color-text: #0F1419;
     --color-date: #71767B;
     --color-disabled: #C3C4C5;
     --color-border: #F3F3F3;
-    --color-warn: red;
+    --color-warn: #F01D32;
 }
 
 /* fonts */
 @font-face {
     font-family: 'Noto Emoji';
-    font-style: normal;
     src: url('../fonts/NotoEmoji-Regular.ttf');
 }
 
@@ -31,7 +30,7 @@ body {
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1.8;
 }
 
 hr {
@@ -39,7 +38,6 @@ hr {
     border-top: 3px dotted var(--color-main);
     margin: 1em 0;
 }
-
 
 a {
     border-bottom: 2px dashed;
@@ -73,7 +71,6 @@ header {
     justify-content: space-between;
     margin: 1em 0;
     padding-bottom: 1rem;
-    border-bottom: 0.25rem dashed var(--color-main);
 }
 
 header span {
@@ -177,8 +174,7 @@ div.pagination span.disabled-link {
     color: var(--color-disabled);
 }
 
-
-/* Images */
+/* images */
 img {
     border: 3px solid #ececec;
     max-width: 100%;
@@ -210,9 +206,6 @@ figure h4 {
 figure h4::before {
     content: '↳ ';
 }
-
-
-
 
 /* Code blocks */
 code {
@@ -331,56 +324,49 @@ h1.page-title {
     margin-top: 1rem;
 }
 
+/* info, warning */
+.info,
+.warn {
+    color: var(--color-background);
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
 
 .info {
     background-color: var(--color-main);
-    color: var(--color-text);
-    padding: 0rem;
-    margin: 0.5em;
-}
-
-.info p {
-    margin: 0;
-}
-
-.info a {
-    border-bottom: 3px solid #fff;
-}
-
-.info h3::before {
-    content: none;
-}
-
-.info a:hover {
-    background-color: #fff;
-    color: dodgerblue;
 }
 
 .warn {
-    background-color: dodgerblue;
-    color: #fff;
-    padding: 1em;
+    background-color: var(--color-warn);
 }
 
+.info p,
 .warn p {
-    font-family: 'IBM Plex Mono', monospace;
     margin: 0;
 }
 
+.info h3,
+.warn h3 {
+    margin-top: 0em;
+}
+
+.info h3::before,
+.warn h3::before {
+    content: none;
+}
+
+.info a,
 .warn a {
     border-bottom: 3px solid #fff;
 }
 
-.warn a:hover {
+.info a:hover,
+warn a:hover {
     background-color: #fff;
     color: dodgerblue;
 }
 
-.site-description {
-    display: flex;
-    justify-content: space-between;
-}
-
+/* tag */
 .tags li::before {
     content: "🏷 ";
     font: 'Noto Emoji';
@@ -399,10 +385,7 @@ svg {
     max-height: 15px;
 }
 
-.soc:hover {
-    color: white;
-}
-
+/* codeblock */
 .draft-label {
     color: rebeccapurple;
     text-decoration: none;
@@ -422,71 +405,62 @@ svg {
 }
 
 .highlight pre code[class*="language-"]::before {
-    background: black;
     border-radius: 0 0 0.25rem 0.25rem;
-    color: white;
     font-size: 12px;
     letter-spacing: 0.025rem;
     padding: 0.1rem 0.5rem;
     position: absolute;
     right: 1rem;
     text-align: right;
-    text-transform: uppercase;
     top: 0;
+    background: var(--color-background);
+    color: var(--color-text);
 }
 
 .highlight pre code[class=language-javaScript]::before,
 .highlight pre code[class="language-js"]::before {
     content: "js";
-    background: #f7df1e;
-    color: black;
 }
 
 .highlight pre code[class*='language-yml']::before,
 .highlight pre code[class*='language-yaml']::before {
     content: 'yaml';
-    background: #f71e6a;
-    color: white;
 }
 
 .highlight pre code[class*='language-shell']::before,
 .highlight pre code[class*='language-bash']::before,
 .highlight pre code[class*='language-sh']::before {
     content: 'shell';
-    background: green;
-    color: white
 }
 
 .highlight pre code[class*='language-json']::before {
     content: 'json';
-    background: dodgerblue;
-    color: #000000
 }
 
 .highlight pre code[class*='language-python']::before,
 .highlight pre code[class*='language-py']::before {
     content: 'py';
-    background: blue;
-    color: yellow;
 }
 
 .highlight pre code[class*='language-css']::before {
     content: 'css';
-    background: cyan;
-    color: black;
+}
+
+.highlight pre code[class*='language-java']::before {
+    content: 'java';
 }
 
 .highlight pre code[class*='language-go']::before {
-    content: 'Go';
-    background: cyan;
-    color: royalblue;
+    content: 'go';
 }
 
-.highlight pre code[class*='language-md']::before,
+.highlight pre code[class*='language-rust']::before,
+.highlight pre code[class*='language-rs']::before {
+    content: 'rs';
+}
+
 .highlight pre code[class*='language-md']::before {
-    content: 'Markdown';
-    background: royalblue;
-    color: whitesmoke;
+    content: 'md';
 }
 
 /* table */
@@ -512,4 +486,9 @@ blockquote {
     color: var(--color-date);
     margin: 0;
     padding-left: 1em;
+}
+
+/* footnote */
+.footnote-backref {
+    font-family: 'Noto Emoji';
 }
