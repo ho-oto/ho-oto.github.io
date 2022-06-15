@@ -1,13 +1,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="
-    {{- with .Description -}} {{- . -}} {{- else -}}
-        {{- if .IsPage -}} {{- .Summary -}} {{- else -}}
-            {{- with .Site.Params.description -}} {{- . -}} {{- end -}}
-        {{- end -}}
-    {{- end -}}" />
+    {{- with .Description }}{{ . }}{{ else }}
+        {{- if .IsPage }}{{ .Summary }}{{ else }}
+            {{- with .Site.Params.description }}{{ . }}{{ end }}
+        {{- end }}
+    {{- end }}" />
     <title>
         {{- if .IsHome -}}
         {{ .Site.Title }} | Home
