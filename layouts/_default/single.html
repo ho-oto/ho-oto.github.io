@@ -4,7 +4,14 @@
 
 <div class="title">
     <h1 class="page-title">{{ .Title }}</h1>
-    <div class="meta">Posted on {{ dateFormat "2006/1/2" .Date }}</div>
+    <div class="meta">
+        {{- $date := dateFormat "2006/1/2" .Date }}
+        {{- $lastmod := dateFormat "2006/1/2" .Lastmod -}}
+        posted on {{ dateFormat "2006/1/2" .Date }}
+        {{- if ne $date $lastmod -}}
+            , updated on {{ $lastmod }}
+        {{- end -}}
+    </div>
 </div>
 
 {{ with .Params.tldr -}}
