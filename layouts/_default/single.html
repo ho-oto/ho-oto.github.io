@@ -27,20 +27,21 @@
         </ul>
     </nav>
     {{- end }}
-    {{- if or .NextInSection .PrevInSection }}
-    <div class="pagination-in-post">
-        {{ with .PrevInSection -}}
-        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-        {{- else -}}
-        No Previous Post
-        {{- end }}{{ with .NextInSection -}}
-        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-        {{- else -}}
-        No Next Post
-        {{- end }}
-    </div>
+</div>
+
+{{ if or .NextInSection .PrevInSection -}}
+<div class="pagination-in-post">
+    {{ with .PrevInSection -}}
+    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+    {{- else -}}
+    No Previous Post
+    {{- end }}{{ with .NextInSection -}}
+    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+    {{- else -}}
+    No Next Post
     {{- end }}
 </div>
+{{- end }}
 
 </article>
 </main>

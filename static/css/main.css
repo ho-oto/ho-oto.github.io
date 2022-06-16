@@ -1,9 +1,11 @@
 /* color */
 :root {
-    --color-background: #FFFFFF;
+    --color-white: #FFFFFF;
+    --color-black: #0F1419;
+    --color-background: var(--color-white);
+    --color-text: var(--color-black);
     --color-main: #1D9BF0;
-    --color-text: #0F1419;
-    --color-date: #71767B;
+    --color-meta: #71767B;
     --color-disabled: #C3C4C5;
     --color-border: #F3F3F3;
     --color-warn: #F01D32;
@@ -15,6 +17,7 @@
     src: url('../fonts/NotoEmoji-Regular.ttf');
 }
 
+/* common */
 html {
     color: var(--color-text);
     font-family: 'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif, 'Noto Emoji';
@@ -22,7 +25,6 @@ html {
     line-height: 1.6em;
 }
 
-/* body */
 body {
     display: block;
     margin: 10px;
@@ -34,8 +36,8 @@ p {
 }
 
 hr {
-    border: 0;
-    border-top: 3px dotted var(--color-main);
+    border: none;
+    border-top: 2px dotted var(--color-main);
     margin: 1em 0;
 }
 
@@ -50,18 +52,30 @@ a:hover {
     color: var(--color-background);
 }
 
+/* list config */
 ul {
-    list-style: none;
-    padding-left: 2ch;
+    list-style: disc outside;
 }
 
-ul li {
-    text-indent: -2ch;
+.tags li::marker {
+    content: "🏷 ";
+    font: 'Noto Emoji';
 }
 
-ul>li::before {
-    content: '* ';
-    font-weight: bold;
+.posts li::marker {
+    content: "📑 ";
+    font: 'Noto Emoji';
+}
+
+.tags a,
+.posts a {
+    border-bottom: 3px solid var(--color-main);
+}
+
+.tags a:hover,
+.posts a:hover {
+    color: var(--color-background);
+    background-color: var(--color-text);
 }
 
 /* header */
@@ -111,6 +125,7 @@ footer .social {
 }
 
 footer a:nth-last-of-type(2) {
+    /* class使って書き直す*/
     margin-right: 0.5rem;
 }
 
@@ -155,24 +170,26 @@ section.list-item {
 }
 
 /* pagination-in-index */
-div.pagination-in-index {
+.pagination-in-index {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
 }
 
-div.pagination-in-index a {
+.pagination-in-index a {
     border-bottom: 2px solid;
 }
 
-div.pagination-in-index span {
+.pagination-in-index span {
     margin-right: 0.25rem;
     margin-left: 0.25rem;
 }
 
-div.pagination-in-index span.disabled-link {
+.pagination-in-index span.disabled-link {
     color: var(--color-disabled);
 }
+
+/* tags page */
 
 /* images */
 img {
@@ -294,12 +311,6 @@ h6::before {
     content: '###### ';
 }
 
-.meta {
-    color: val(--color-date);
-    letter-spacing: -0.5px;
-}
-
-
 h1.title {
     margin-top: 0;
     margin-bottom: 0.2rem;
@@ -313,7 +324,7 @@ h1.title {
 
 time,
 .meta {
-    color: grey;
+    color: var(--color-meta);
 }
 
 /* Posts */
@@ -328,7 +339,7 @@ h1.page-title {
 /* info, warning */
 .info,
 .warn {
-    color: var(--color-background);
+    color: var(--color-white);
     padding: 0.5em;
     margin-bottom: 0.5em;
 }
@@ -367,20 +378,6 @@ warn a:hover {
     color: dodgerblue;
 }
 
-/* tag */
-.tags li::before {
-    content: "🏷 ";
-    font: 'Noto Emoji';
-}
-
-.tags a {
-    border-bottom: 3px solid var(--color-main);
-}
-
-.tags a:hover {
-    color: white;
-    background-color: var(--color-text);
-}
 
 svg {
     max-height: 15px;
@@ -475,7 +472,7 @@ table td {
 /* tweet */
 blockquote {
     border-left: 3px solid var(--color-main);
-    color: var(--color-date);
+    color: var(--color-meta);
     margin: 0;
     padding-left: 1em;
 }
@@ -483,14 +480,4 @@ blockquote {
 /* footnote */
 .footnote-backref {
     font-family: 'Noto Emoji';
-}
-
-/* draft */
-.draft-label {
-    color: rebeccapurple;
-    text-decoration: none;
-    padding: 2px 4px;
-    border-radius: 4px;
-    margin-left: 6px;
-    background-color: #f9f2f4;
 }
