@@ -3,6 +3,6 @@
     <h3 class="info-title">{{ . }}</h3>
     {{- end }}
     <div class="info-inner">
-        {{ .Get "text" }}
+        {{ .Get "text" | markdownify }}
     </div>
 </div>

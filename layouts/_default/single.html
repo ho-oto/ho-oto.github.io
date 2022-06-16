@@ -32,13 +32,13 @@
 {{ if or .NextInSection .PrevInSection -}}
 <div class="pagination-in-post">
     {{ with .PrevInSection -}}
-    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+    <a href="{{ .Permalink }}">&larr; {{ .LinkTitle }}</a>
     {{- else -}}
-    No Previous Post
-    {{- end }}{{ with .NextInSection -}}
-    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+    <span class="disabled-link">No Previous Post</span>
+    {{- end }}<a href=#>&uarr;</a>{{ with .NextInSection -}}
+    <a href="{{ .Permalink }}">{{ .LinkTitle }} &rarr;</a>
     {{- else -}}
-    No Next Post
+    <span class="disabled-link">No Next Post</span>
     {{- end }}
 </div>
 {{- end }}

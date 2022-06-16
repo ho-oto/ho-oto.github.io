@@ -86,19 +86,6 @@ h6::before {
     content: '###### ';
 }
 
-hr {
-    border: none;
-    border-top: 2px dotted var(--color-main);
-    margin: 1em 0;
-}
-
-blockquote {
-    border-left: 3px solid var(--color-main);
-    color: var(--color-meta);
-    margin: 0;
-    padding-left: 1em;
-}
-
 /* list config */
 ul {
     list-style: disc outside;
@@ -125,6 +112,10 @@ ul {
     background-color: var(--color-text);
 }
 
+.post .meta::after {
+    content: " : ";
+}
+
 /* header */
 header {
     display: flex;
@@ -147,8 +138,7 @@ header nav a {
     padding-top: 0.125rem;
 }
 
-header nav a:last-of-type {
-    /* classで書き換え */
+header nav a#dark-mode-toggle {
     margin-right: 0;
     border-bottom: none;
     color: var(--color-background);
@@ -176,12 +166,11 @@ footer .social {
     border-bottom: none;
 }
 
-footer a:nth-last-of-type(2) {
-    /* class使って書き直す*/
+footer a:last-of-type {
     margin-right: 0.5rem;
 }
 
-footer a:last-of-type {
+footer span a {
     border-bottom: none;
 }
 
@@ -316,13 +305,17 @@ h1.page-title {
 
 .info a,
 .warn a {
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid var(--color-white);
 }
 
-.info a:hover,
-warn a:hover {
-    background-color: #fff;
-    color: dodgerblue;
+.warn a:hover {
+    background-color: var(--color-white);
+    color: var(--color-warn);
+}
+
+.info a:hover {
+    background-color: var(--color-white);
+    color: var(--color-main)
 }
 
 /* images */
@@ -455,25 +448,58 @@ pre code {
     content: 'md';
 }
 
+hr {
+    border: none;
+    border-top: 2px dotted var(--color-main);
+    margin: 1em 0;
+}
+
+blockquote {
+    border-left: 3px solid var(--color-main);
+    color: var(--color-meta);
+    margin: 0;
+    padding-left: 1em;
+}
+
 /* table */
 table {
     border-spacing: 0;
     border-collapse: collapse;
+    margin: 1em 0;
 }
 
 table th {
     padding: 6px 13px;
-    border: 1px solid #dfe2e5;
+    border: 1px solid var(--color-disabled);
     font-size: large;
 }
 
 table td {
     padding: 6px 13px;
-    border: 1px solid #dfe2e5;
+    border: 1px solid var(--color-disabled);
 }
-
 
 /* footnote */
 .footnote-backref {
     font-family: 'Noto Emoji';
+}
+
+.pagination-in-post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.pagination-in-post a {
+    border-bottom: 2px solid;
+}
+
+.pagination-in-post span {
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+.pagination-in-post span.disabled-link {
+    color: var(--color-disabled);
 }
