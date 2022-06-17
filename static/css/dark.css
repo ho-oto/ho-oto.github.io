@@ -1,5 +1,5 @@
 :root {
-    --color-background: var(--color-black);
+    --color-back: var(--color-black);
     --color-text: var(--color-white);
     --color-date: #71767B;
     --color-disabled: #C3C4C5;
