@@ -8,17 +8,17 @@
 
 {{ partial "head.html" . }}
 
-<main class="list">
+<main>
 {{- $pages := where
 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
 "Params.hidden" "ne" true }}
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
-<section class="list-item">
-    <div class="list-item-icon"></div>
-    <div class="list-item-body">
-        <div class="title-info">
-            <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+<section class="index_card">
+    <div class="icon"></div>
+    <div class>
+        <div class="title_info">
+            <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
             {{- $dateTag := .Date.Local.Format "2006-01-02" }}
             {{- $dateShow := .Date.Local.Format "2006/1/2" }}
             <time datetime="{{ $dateTag }}">{{ $dateShow }}</time>
@@ -34,17 +34,17 @@
 </main>
 {{ if gt $.Paginator.TotalPages 1 -}}
 {{ $p := $.Paginator -}}
-<div class="pagination-in-index">
+<div class="pagination_of_index">
     {{- if $p.HasPrev -}}
-    <a href="{{ $p.Prev.URL }}" class="page-link" aria-label="Previous"><span aria-hidden="true">&larr;</span></a>
+    <a href="{{ $p.Prev.URL }}" aria-label="Previous"><span aria-hidden="true">&larr;</span></a>
     {{- else -}}
-    <span class="disabled-link" aria-hidden="true">&larr;</span>
+    <span class="link_disabled" aria-hidden="true">&larr;</span>
     {{- end -}}
     <span class="page-number">Page {{ $p.PageNumber }} of {{ $p.TotalPages }}</span>
     {{- if $p.HasNext -}}
-    <a href="{{ $p.Next.URL }}" class="page-link" aria-label="Next"><span aria-hidden="true">&rarr;</span></a>
+    <a href="{{ $p.Next.URL }}" aria-label="Next"><span aria-hidden="true">&rarr;</span></a>
     {{- else -}}
-    <span class="disabled-link" aria-hidden="true">&rarr;</span>
+    <span class="link_disabled" aria-hidden="true">&rarr;</span>
     {{- end -}}
 </div>
 {{- end }}

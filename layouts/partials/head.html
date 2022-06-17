@@ -1,7 +1,7 @@
 <header>
     <div class="main">
-        <a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-        <div class="site-description">
+        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        <div>
             {{- with .Site.Params.subtitle -}}
             <span>{{ . | markdownify }}</span>
             {{- end -}}

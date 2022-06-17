@@ -1,6 +1,6 @@
 {{ define "main" }}
-<h1 class="page-title">All tags</h1>
-<div class="tag-cloud">
+<h1>All tags</h1>
+<div>
     <ul class="tags">
         {{- range .Data.Terms.Alphabetical }}
         <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>

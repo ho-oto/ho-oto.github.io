@@ -1,8 +1,8 @@
 <div class="warn">
     {{- with .Get "title" }}
-    <h3 class="warn-title">{{ . }}</h3>
+    <h3>{{ . }}</h3>
     {{- end }}
-    <div class="warn-inner">
+    <div>
         {{ .Get "text" | markdownify }}
     </div>
 </div>
