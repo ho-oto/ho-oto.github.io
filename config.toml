@@ -6,10 +6,9 @@ enableGitInfo = true
 
 [params]
 subtitle = "メモとか作業ログとか"
-excludedTypes = ["log"]
 
 [frontmatter]
-date = ["date", ":git", "publishDate", "lastmod"]
+date = ["date", ":git", "lastmod", "publishDate"]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [[params.social]]
