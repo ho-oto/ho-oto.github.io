@@ -2,7 +2,9 @@
     {{- range .Data.Pages }}
     {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type )) }}
     <li class="post">
-        <span class="meta">{{ dateFormat "2006/1/2" .Date }}</span>
+        {{- $dateTag := .Date.Local.Format "2006-01-02" }}
+        {{- $dateShow := .Date.Local.Format "2006/1/2" }}
+        <time datetime="{{ $dateTag }}">{{ $dateShow }}</time>
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </li>
     {{- end }}

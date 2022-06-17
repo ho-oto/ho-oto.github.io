@@ -2,9 +2,15 @@ baseURL = 'http://example.org/'
 languageCode = 'ja'
 title = "Cacao's repaying"
 copyright = "© Hayate Nakano"
+enableGitInfo = true
 
 [params]
 subtitle = "メモとか作業ログとか"
+excludedTypes = ["log"]
+
+[frontmatter]
+date = ["date", ":git", "publishDate", "lastmod"]
+lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [[params.social]]
 name = "LinkedIn"
@@ -17,6 +23,11 @@ url = "https://github.com/ho-oto"
 [[params.social]]
 name = "Twitter"
 url = "https://twitter.com/h8t0"
+
+[[menu.main]]
+name = "Working logs"
+url = "/tags/log"
+weight = 1
 
 [[menu.main]]
 name = "All posts"

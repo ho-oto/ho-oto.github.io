@@ -112,7 +112,11 @@ ul {
     background-color: var(--color-text);
 }
 
-.post .meta::after {
+.post time {
+    color: var(--color-meta);
+}
+
+.post time::after {
     content: " : ";
 }
 

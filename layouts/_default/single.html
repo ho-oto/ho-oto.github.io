@@ -5,11 +5,13 @@
 <div class="title">
     <h1 class="page-title">{{ .Title }}</h1>
     <div class="meta">
-        {{- $date := dateFormat "2006/1/2" .Date }}
-        {{- $lastmod := dateFormat "2006/1/2" .Lastmod -}}
-        posted on {{ dateFormat "2006/1/2" .Date }}
-        {{- if ne $date $lastmod -}}
-            , updated on {{ $lastmod }}
+        {{- $dateTag := .Date.Local.Format "2006-01-02" -}}
+        {{- $dateShow := .Date.Local.Format "2006/1/2" -}}
+        {{- $lastmodTag := .Lastmod.Local.Format "2006-01-02" -}}
+        {{- $lastmodShow := .Lastmod.Local.Format "2006/1/2" -}}
+        posted on <time datetime="{{ $dateTag }}">{{ $dateShow }}</time>
+        {{- if ne $dateTag $lastmodTag -}}
+            , updated on <time datetime="{{ $lastmodTag }}">{{ $lastmodShow }}</time>
         {{- end -}}
     </div>
 </div>

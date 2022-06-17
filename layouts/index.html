@@ -19,7 +19,9 @@
     <div class="list-item-body">
         <div class="title-info">
             <h1 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-            <time>{{ dateFormat "2006/1/2" .Date }}</time>
+            {{- $dateTag := .Date.Local.Format "2006-01-02" }}
+            {{- $dateShow := .Date.Local.Format "2006/1/2" }}
+            <time datetime="{{ $dateTag }}">{{ $dateShow }}</time>
         </div>
         <div class="description">
             {{- with .Params.description }}{{ . }}
