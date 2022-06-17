@@ -1,7 +1,6 @@
-baseURL = 'http://example.org/'
-languageCode = 'ja'
 title = "Cacao's repaying"
 copyright = "© Hayate Nakano"
+languageCode = 'ja'
 enableGitInfo = true
 
 [params]
