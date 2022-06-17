@@ -1,0 +1,631 @@
+/* color */
+:root {
+    --color-white: #FFFFFF;
+    --color-black: #0F1419;
+    --color-back: var(--color-white);
+    --color-text: var(--color-black);
+    --color-main: #1D9BF0;
+    --color-meta: #71767B;
+    --color-disabled: #C3C4C5;
+    --color-border: #F3F3F3;
+    --color-warn: #F01D32;
+}
+
+/* fonts */
+@font-face {
+    font-family: 'Noto Emoji';
+    src: url('../fonts/NotoEmoji-Regular.ttf');
+}
+
+/* common */
+html {
+    color: var(--color-text);
+    font-family: 'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.6rem;
+}
+
+body {
+    display: block;
+    margin: 15px;
+    background-color: var(--color-back);
+    overflow-y: scroll;
+}
+
+p {
+    line-height: 1.8;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 2px dashed;
+}
+
+a:hover {
+    background-color: var(--color-text);
+    color: var(--color-back);
+}
+
+h1 {
+    font-size: 1.4rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1.2rem;
+    margin-top: 2.4rem;
+}
+
+h1::before {
+    color: var(--color-main);
+    content: '# ';
+}
+
+h2::before {
+    color: var(--color-main);
+    content: '## ';
+}
+
+h3::before {
+    color: var(--color-main);
+    content: '### ';
+}
+
+h4::before {
+    color: var(--color-main);
+    content: '#### ';
+}
+
+h5::before {
+    color: var(--color-main);
+    content: '##### ';
+}
+
+h6::before {
+    color: var(--color-main);
+    content: '###### ';
+}
+
+/* list config */
+ul {
+    list-style: disc outside;
+}
+
+.tags li::marker {
+    content: "🏷";
+    font-family: 'Noto Emoji';
+}
+
+.posts li::marker {
+    content: "📑";
+    font-family: 'Noto Emoji';
+}
+
+.tags a,
+.posts a {
+    border-bottom: 2px solid var(--color-main);
+}
+
+.tags a:hover,
+.posts a:hover {
+    color: var(--color-back);
+    background-color: var(--color-text);
+}
+
+.post time {
+    color: var(--color-meta);
+}
+
+.post time::after {
+    content: " : ";
+}
+
+/* header */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+header .main {
+    font-size: 1.5rem;
+}
+
+header span {
+    font-size: 1.1rem;
+}
+
+header nav a {
+    margin-right: 0.75rem;
+}
+
+header nav a#dark-mode-toggle {
+    margin-right: 0;
+    border-bottom: none;
+    color: var(--color-back);
+    background-color: var(--color-text);
+    padding: 1px 0.125rem;
+    position: relative;
+    bottom: -1px;
+}
+
+/* footer */
+footer {
+    align-items: center;
+    border-top: 4px dashed var(--color-main);
+    padding-top: 15px;
+    margin-top: 2rem;
+    word-wrap: break-word;
+}
+
+footer .social {
+    align-items: center;
+    padding: 0 0.5rem;
+    margin-right: 0rem;
+    border-right: 2px solid var(--color-text);
+    border-bottom: none;
+}
+
+footer a:last-of-type {
+    margin-right: 0.5rem;
+}
+
+footer span a {
+    border-bottom: none;
+}
+
+/* body */
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
+    word-wrap: break-word;
+}
+
+/* index body */
+.index_card h1 {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.index_card h1::before {
+    content: none;
+}
+
+.index_card time {
+    color: var(--color-meta);
+}
+
+.index_card {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.index_card:last-of-type {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.index_card .icon::after {
+    content: '#';
+}
+
+.index_card .icon {
+    background: var(--color-main);
+    color: var(--color-back);
+    width: 32px;
+    height: 32px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    font-weight: bold;
+    flex: none;
+}
+
+.title_info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0;
+    align-items: flex-end;
+}
+
+/* pagination_of_index */
+.pagination_of_index {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.pagination_of_index a {
+    border-bottom: 2px solid;
+}
+
+.pagination_of_index span {
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+.pagination_of_index .link_disabled {
+    color: var(--color-disabled);
+}
+
+/* content */
+
+.post-title-block {
+    margin-bottom: 3rem;
+}
+
+.post-title-block h1 {
+    margin: 0;
+}
+
+.post-title-block .meta {
+    color: var(--color-meta);
+    margin-bottom: 1rem;
+}
+
+/* images */
+img {
+    border: 3px solid var(--color-border);
+    max-width: 100%;
+}
+
+figure {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    max-width: 100%;
+}
+
+figure img {
+    max-height: 500px;
+}
+
+@media screen and (min-width: 600px) {
+    figure {
+        padding: 0 40px;
+    }
+}
+
+figure h4 {
+    font-size: 1rem;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+figure h4::before {
+    content: '↳ ';
+}
+
+svg {
+    max-height: 15px;
+}
+
+/* inline code */
+code {
+    background-color: var(--color-text);
+    color: var(--color-back);
+    padding: .1rem .2rem;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* info/warn block */
+.info,
+.warn {
+    color: var(--color-white);
+    padding: 7.5px;
+    margin: 1rem 0;
+}
+
+.info {
+    background-color: var(--color-main);
+}
+
+.warn {
+    background-color: var(--color-warn);
+}
+
+.info p,
+.warn p {
+    margin: 0;
+}
+
+.info h3,
+.warn h3 {
+    margin-top: 0;
+}
+
+.info h3::before,
+.warn h3::before {
+    content: none;
+}
+
+.info a,
+.warn a {
+    border-bottom: 3px solid var(--color-white);
+}
+
+.warn a:hover {
+    background-color: var(--color-white);
+    color: var(--color-warn);
+}
+
+.info a:hover {
+    background-color: var(--color-white);
+    color: var(--color-main)
+}
+
+/* code block */
+pre {
+    background-color: var(--color-meta);
+    line-height: 1.4;
+    overflow-x: auto;
+    padding: 7.5px;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.highlight pre ::selection {
+    background: var(--color-disabled);
+    color: inherit;
+}
+
+pre code {
+    background-color: transparent;
+    color: inherit;
+    font-size: 100%;
+    padding: 0;
+}
+
+.highlight {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+.highlight pre code[class*="language-"] {
+    -webkit-overflow-scrolling: touch;
+}
+
+.highlight pre code[class*="language-"]::before {
+    border-radius: 0 0 0.25rem 0.25rem;
+    font-size: 12px;
+    letter-spacing: 0.025rem;
+    padding: 0.1rem 0.5rem;
+    position: absolute;
+    right: 1rem;
+    text-align: right;
+    top: 0;
+    background: var(--color-back);
+    color: var(--color-text);
+}
+
+.highlight pre code[class*='language-abnf']::before {
+    content: 'ABNF';
+}
+
+.highlight pre code[class*='language-applescript']::before {
+    content: 'AppleScript';
+}
+
+.highlight pre code[class*='language-shell']::before,
+.highlight pre code[class*='language-bash']::before,
+.highlight pre code[class*='language-sh']::before {
+    content: 'Bash';
+}
+
+.highlight pre code[class*='language-bnf']::before {
+    content: 'BNF';
+}
+
+.highlight pre code[class*='language-c']::before {
+    content: 'C';
+}
+
+.highlight pre code[class*='language-cpp']::before,
+.highlight pre code[class*='language-c++']::before {
+    content: 'C++';
+}
+
+.highlight pre code[class*='language-cmake']::before {
+    content: 'CMake';
+}
+
+.highlight pre code[class*='language-css']::before {
+    content: 'CSS';
+}
+
+.highlight pre code[class*='language-cython']::before,
+.highlight pre code[class*='language-pyx']::before,
+.highlight pre code[class*='language-pyrex']::before {
+    content: 'Cython';
+}
+
+.highlight pre code[class*='language-docker']::before,
+.highlight pre code[class*='language-dockerfile']::before {
+    content: 'Docker';
+}
+
+.highlight pre code[class*='language-ebnf']::before {
+    content: 'EBFN';
+}
+
+.highlight pre code[class*='language-fish']::before,
+.highlight pre code[class*='language-fishshell']::before {
+    content: 'Fish';
+}
+
+.highlight pre code[class*='language-ebnf']::before {
+    content: 'EBFN';
+}
+
+.highlight pre code[class*='language-go']::before,
+.highlight pre code[class*='language-golang']::before {
+    content: 'Go';
+}
+
+.highlight pre code[class*='language-hs']::before,
+.highlight pre code[class*='language-haskell']::before {
+    content: 'Haskell';
+}
+
+.highlight pre code[class*='language-hexdump']::before {
+    content: 'Hexdump';
+}
+
+.highlight pre code[class*='language-html']::before {
+    content: 'HTML';
+}
+
+.highlight pre code[class*='language-idris']::before,
+.highlight pre code[class*='language-idr']::before {
+    content: 'Idris';
+}
+
+.highlight pre code[class*='language-java']::before {
+    content: 'Java';
+}
+
+.highlight pre code[class='language-javascript']::before,
+.highlight pre code[class='language-js']::before {
+    content: "JavaScript";
+}
+
+.highlight pre code[class='language-json']::before {
+    content: "JSON";
+}
+
+.highlight pre code[class='language-julia']::before,
+.highlight pre code[class='language-jl']::before {
+    content: "Julia";
+}
+
+.highlight pre code[class='language-lua']::before {
+    content: "Lua";
+}
+
+.highlight pre code[class*='language-md']::before,
+.highlight pre code[class*='language-mkd']::before {
+    content: 'markdown';
+}
+
+.highlight pre code[class*='language-mysql']::before,
+.highlight pre code[class*='language-mariadb']::before {
+    content: 'MySQL';
+}
+
+.highlight pre code[class='language-ocaml']::before {
+    content: "OCaml";
+}
+
+.highlight pre code[class*='language-powershell']::before,
+.highlight pre code[class*='language-posh']::before,
+.highlight pre code[class*='language-ps1']::before,
+.highlight pre code[class*='language-psm1']::before,
+.highlight pre code[class*='language-psd1']::before {
+    content: 'PowerShell';
+}
+
+.highlight pre code[class*='language-python']::before,
+.highlight pre code[class*='language-py']::before {
+    content: 'py';
+}
+
+.highlight pre code[class*='language-rust']::before,
+.highlight pre code[class*='language-rs']::before {
+    content: 'Rust';
+}
+
+.highlight pre code[class='language-sql']::before {
+    content: "SQL";
+}
+
+.highlight pre code[class*='language-tex']::before,
+.highlight pre code[class*='language-latex']::before {
+    content: 'TeX';
+}
+
+.highlight pre code[class='language-toml']::before {
+    content: "TOML";
+}
+
+.highlight pre code[class*='language-ts']::before,
+.highlight pre code[class*='language-tsx']::before,
+.highlight pre code[class*='language-typescript']::before {
+    content: 'TypeScript';
+}
+
+.highlight pre code[class='language-xml']::before {
+    content: "XML";
+}
+
+.highlight pre code[class*='language-yaml']::before {
+    content: 'YAML';
+}
+
+/* table */
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+table th {
+    padding: 6px 13px;
+    border: 1px solid var(--color-disabled);
+    font-size: large;
+}
+
+table td {
+    padding: 6px 13px;
+    border: 1px solid var(--color-disabled);
+}
+
+/* misc */
+hr {
+    border: none;
+    border-top: 2px dotted var(--color-main);
+    margin: 1rem 0;
+}
+
+blockquote {
+    border-left: 3px solid var(--color-main);
+    color: var(--color-meta);
+    margin: 1rem 0;
+    padding-left: 1rem;
+}
+
+/* footnote */
+.footnote-backref {
+    font-family: 'Noto Emoji';
+}
+
+.pagination_in_post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.pagination_in_post a {
+    border-bottom: 2px solid;
+}
+
+.pagination_in_post span {
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+.pagination_in_post .link_disabled {
+    color: var(--color-disabled);
+}

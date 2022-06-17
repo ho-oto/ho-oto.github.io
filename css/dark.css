@@ -1,0 +1,7 @@
+:root {
+    --color-back: var(--color-black);
+    --color-text: var(--color-white);
+    --color-date: #71767B;
+    --color-disabled: #4B4E52;
+    --color-border: #1B1F24;
+}
