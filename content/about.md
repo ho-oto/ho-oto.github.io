@@ -6,4 +6,4 @@ aliases : ["about-me","contact"]
 author : "Hayate Nakano"
 ---
 
-Test
+準備中
