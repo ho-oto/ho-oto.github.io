@@ -22,12 +22,12 @@ html {
     color: var(--color-text);
     font-family: 'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 15px;
-    line-height: 1.6em;
+    line-height: 1.6rem;
 }
 
 body {
     display: block;
-    margin: 10px;
+    margin: 15px;
     background-color: var(--color-background);
 }
 
@@ -46,14 +46,17 @@ a:hover {
     color: var(--color-background);
 }
 
-h1,
+h1 {
+    font-size: 1.4rem;
+}
+
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-size: 1.3rem;
-    margin-top: 2em;
+    font-size: 1.2rem;
+    margin-top: 2.4rem;
 }
 
 h1::before {
@@ -125,8 +128,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 1em 0;
-    padding-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 header .main {
@@ -134,7 +136,7 @@ header .main {
 }
 
 header span {
-    font-size: medium;
+    font-size: 1.1rem;
 }
 
 header nav a {
@@ -155,16 +157,15 @@ header nav a#dark-mode-toggle {
 /* footer */
 footer {
     align-items: center;
-    border-top: 0.25rem dashed var(--color-main);
-    padding: 1rem 0rem;
+    border-top: 4px dashed var(--color-main);
+    padding-top: 15px;
     margin-top: 2rem;
     word-wrap: break-word;
 }
 
 footer .social {
     align-items: center;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding: 0 0.5rem;
     margin-right: 0rem;
     border-right: 2px solid var(--color-text);
     border-bottom: none;
@@ -253,7 +254,6 @@ section.list-item {
 
 /* content */
 .content {
-    margin-bottom: 4em;
     margin-left: auto;
     margin-right: auto;
     max-width: 680px;
@@ -261,20 +261,17 @@ section.list-item {
     word-wrap: break-word;
 }
 
-.title h1 {
-    margin-bottom: 0;
+.post-title-block {
+    margin-bottom: 3rem;
+}
+
+.post-title-block h1 {
+    margin: 0;
 }
 
 .meta {
     color: var(--color-meta);
-}
-
-article .title {
-    margin-bottom: 1em;
-}
-
-h1.page-title {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* images */
@@ -326,8 +323,8 @@ code {
 .info,
 .warn {
     color: var(--color-white);
-    padding: 0.5em;
-    margin-bottom: 0.5em;
+    padding: 7.5px;
+    margin: 1rem 0;
 }
 
 .info {
@@ -461,7 +458,7 @@ pre code {
 table {
     border-spacing: 0;
     border-collapse: collapse;
-    margin: 1em 0;
+    margin: 1rem 0;
 }
 
 table th {
@@ -479,14 +476,14 @@ table td {
 hr {
     border: none;
     border-top: 2px dotted var(--color-main);
-    margin: 1em 0;
+    margin: 1rem 0;
 }
 
 blockquote {
     border-left: 3px solid var(--color-main);
     color: var(--color-meta);
-    margin: 0;
-    padding-left: 1em;
+    margin: 1rem 0;
+    padding-left: 1rem;
 }
 
 /* footnote */

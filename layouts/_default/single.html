@@ -2,7 +2,7 @@
 <main>
 <article>
 
-<div class="title">
+<div class="post-title-block">
     <h1 class="page-title">{{ .Title }}</h1>
     <div class="meta">
         {{- $dateTag := .Date.Local.Format "2006-01-02" -}}
@@ -14,13 +14,14 @@
             , updated on <time datetime="{{ $lastmodTag }}">{{ $lastmodShow }}</time>
         {{- end -}}
     </div>
+    {{ with .Params.tldr -}}
+    <div class="tldr">
+        <strong>tl;dr: </strong>{{ . }}
+    </div>
+{{- end }}
+
 </div>
 
-{{ with .Params.tldr -}}
-<div class="tldr">
-    <strong>tl;dr: </strong>{{ . }}
-</div>
-{{- end }}
 
 <section class="body">
 {{ .Content -}}
