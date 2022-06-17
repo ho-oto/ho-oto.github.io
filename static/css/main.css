@@ -142,7 +142,6 @@ header span {
 
 header nav a {
     margin-right: 0.75rem;
-    padding-top: 0.125rem;
 }
 
 header nav a#dark-mode-toggle {
@@ -150,9 +149,9 @@ header nav a#dark-mode-toggle {
     border-bottom: none;
     color: var(--color-back);
     background-color: var(--color-text);
-    padding-left: 0.125rem;
-    padding-right: 0.125rem;
-    padding-bottom: 0.125rem;
+    padding: 1px 0.125rem;
+    position: relative;
+    bottom: -1px;
 }
 
 /* footer */
