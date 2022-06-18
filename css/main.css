@@ -90,6 +90,11 @@ h6::before {
     content: '###### ';
 }
 
+aside {
+    border-top: 2px dotted var(--color-main);
+    border-bottom: 2px dotted var(--color-main);
+}
+
 /* list config */
 ul {
     list-style: disc outside;
@@ -264,7 +269,7 @@ footer span a {
 /* content */
 
 .post-title-block {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .post-title-block h1 {
@@ -274,6 +279,10 @@ footer span a {
 .post-title-block .meta {
     color: var(--color-meta);
     margin-bottom: 1rem;
+}
+
+.toc {
+    margin-bottom: 2.4rem;
 }
 
 /* images */
@@ -395,182 +404,6 @@ pre code {
 
 .highlight pre code[class*="language-"] {
     -webkit-overflow-scrolling: touch;
-}
-
-.highlight pre code[class*="language-"]::before {
-    border-radius: 0 0 0.25rem 0.25rem;
-    font-size: 12px;
-    letter-spacing: 0.025rem;
-    padding: 0.1rem 0.5rem;
-    position: absolute;
-    right: 1rem;
-    text-align: right;
-    top: 0;
-    background: var(--color-back);
-    color: var(--color-text);
-}
-
-.highlight pre code[class*='language-abnf']::before {
-    content: 'ABNF';
-}
-
-.highlight pre code[class*='language-applescript']::before {
-    content: 'AppleScript';
-}
-
-.highlight pre code[class*='language-shell']::before,
-.highlight pre code[class*='language-bash']::before,
-.highlight pre code[class*='language-sh']::before {
-    content: 'Bash';
-}
-
-.highlight pre code[class*='language-bnf']::before {
-    content: 'BNF';
-}
-
-.highlight pre code[class*='language-c']::before {
-    content: 'C';
-}
-
-.highlight pre code[class*='language-cpp']::before,
-.highlight pre code[class*='language-c++']::before {
-    content: 'C++';
-}
-
-.highlight pre code[class*='language-cmake']::before {
-    content: 'CMake';
-}
-
-.highlight pre code[class*='language-css']::before {
-    content: 'CSS';
-}
-
-.highlight pre code[class*='language-cython']::before,
-.highlight pre code[class*='language-pyx']::before,
-.highlight pre code[class*='language-pyrex']::before {
-    content: 'Cython';
-}
-
-.highlight pre code[class*='language-docker']::before,
-.highlight pre code[class*='language-dockerfile']::before {
-    content: 'Docker';
-}
-
-.highlight pre code[class*='language-ebnf']::before {
-    content: 'EBFN';
-}
-
-.highlight pre code[class*='language-fish']::before,
-.highlight pre code[class*='language-fishshell']::before {
-    content: 'Fish';
-}
-
-.highlight pre code[class*='language-ebnf']::before {
-    content: 'EBFN';
-}
-
-.highlight pre code[class*='language-go']::before,
-.highlight pre code[class*='language-golang']::before {
-    content: 'Go';
-}
-
-.highlight pre code[class*='language-hs']::before,
-.highlight pre code[class*='language-haskell']::before {
-    content: 'Haskell';
-}
-
-.highlight pre code[class*='language-hexdump']::before {
-    content: 'Hexdump';
-}
-
-.highlight pre code[class*='language-html']::before {
-    content: 'HTML';
-}
-
-.highlight pre code[class*='language-idris']::before,
-.highlight pre code[class*='language-idr']::before {
-    content: 'Idris';
-}
-
-.highlight pre code[class*='language-java']::before {
-    content: 'Java';
-}
-
-.highlight pre code[class='language-javascript']::before,
-.highlight pre code[class='language-js']::before {
-    content: "JavaScript";
-}
-
-.highlight pre code[class='language-json']::before {
-    content: "JSON";
-}
-
-.highlight pre code[class='language-julia']::before,
-.highlight pre code[class='language-jl']::before {
-    content: "Julia";
-}
-
-.highlight pre code[class='language-lua']::before {
-    content: "Lua";
-}
-
-.highlight pre code[class*='language-md']::before,
-.highlight pre code[class*='language-mkd']::before {
-    content: 'markdown';
-}
-
-.highlight pre code[class*='language-mysql']::before,
-.highlight pre code[class*='language-mariadb']::before {
-    content: 'MySQL';
-}
-
-.highlight pre code[class='language-ocaml']::before {
-    content: "OCaml";
-}
-
-.highlight pre code[class*='language-powershell']::before,
-.highlight pre code[class*='language-posh']::before,
-.highlight pre code[class*='language-ps1']::before,
-.highlight pre code[class*='language-psm1']::before,
-.highlight pre code[class*='language-psd1']::before {
-    content: 'PowerShell';
-}
-
-.highlight pre code[class*='language-python']::before,
-.highlight pre code[class*='language-py']::before {
-    content: 'py';
-}
-
-.highlight pre code[class*='language-rust']::before,
-.highlight pre code[class*='language-rs']::before {
-    content: 'Rust';
-}
-
-.highlight pre code[class='language-sql']::before {
-    content: "SQL";
-}
-
-.highlight pre code[class*='language-tex']::before,
-.highlight pre code[class*='language-latex']::before {
-    content: 'TeX';
-}
-
-.highlight pre code[class='language-toml']::before {
-    content: "TOML";
-}
-
-.highlight pre code[class*='language-ts']::before,
-.highlight pre code[class*='language-tsx']::before,
-.highlight pre code[class*='language-typescript']::before {
-    content: 'TypeScript';
-}
-
-.highlight pre code[class='language-xml']::before {
-    content: "XML";
-}
-
-.highlight pre code[class*='language-yaml']::before {
-    content: 'YAML';
 }
 
 /* table */
