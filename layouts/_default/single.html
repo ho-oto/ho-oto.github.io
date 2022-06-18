@@ -2,7 +2,7 @@
 <main>
 <article>
 
-<div class="post-title-block{{ if .Params.toc }} toc{{ end }}">
+<div class="post_title_block{{ if .Params.toc }} toc{{ end }}">
     <h1>{{ .Title }}</h1>
     <div class="meta">
         {{- $dateTag := .Date.Local.Format "2006-01-02" -}}

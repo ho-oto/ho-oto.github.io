@@ -40,7 +40,7 @@
     {{- else -}}
     <span class="link_disabled" aria-hidden="true">&larr;</span>
     {{- end -}}
-    <span class="page-number">Page {{ $p.PageNumber }} of {{ $p.TotalPages }}</span>
+    <span>Page {{ $p.PageNumber }} of {{ $p.TotalPages }}</span>
     {{- if $p.HasNext -}}
     <a href="{{ $p.Next.URL }}" aria-label="Next"><span aria-hidden="true">&rarr;</span></a>
     {{- else -}}

@@ -268,15 +268,15 @@ footer span a {
 
 /* content */
 
-.post-title-block {
+.post_title_block {
     margin-bottom: 4rem;
 }
 
-.post-title-block h1 {
+.post_title_block h1 {
     margin: 0;
 }
 
-.post-title-block .meta {
+.post_title_block .meta {
     color: var(--color-meta);
     margin-bottom: 1rem;
 }
