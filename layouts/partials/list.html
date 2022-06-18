@@ -1,12 +1,10 @@
 <ul class="posts">
     {{- range .Data.Pages }}
-    {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type )) }}
     <li class="post">
         {{- $dateTag := .Date.Local.Format "2006-01-02" }}
         {{- $dateShow := .Date.Local.Format "2006/1/2" }}
         <time datetime="{{ $dateTag }}">{{ $dateShow }}</time>
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </li>
-    {{- end }}
     {{- end }}
 </ul>

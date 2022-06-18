@@ -6,6 +6,7 @@ enableGitInfo = true
 
 [params]
 subtitle = "メモとか作業ログとか"
+mainSections = ["blog"]
 
 [frontmatter]
 date = ["date", ":git", "lastmod", "publishDate"]
@@ -24,21 +25,26 @@ name = "Twitter"
 url = "https://twitter.com/h8t0"
 
 [[menu.main]]
-name = "Working logs"
-url = "/tags/log"
+name = "All posts"
+url = "/blog"
 weight = 1
 
 [[menu.main]]
-name = "All posts"
-url = "/posts"
+name = "Note"
+url = "/note"
 weight = 2
 
 [[menu.main]]
-name = "About"
-url = "/about"
+name = "Log"
+url = "/log"
 weight = 3
 
 [[menu.main]]
 name = "Tags"
 url = "/tags"
 weight = 4
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 5
