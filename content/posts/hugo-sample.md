@@ -4,6 +4,7 @@ description: "Hugoのテスト"
 tags: [web]
 tldr: "ここは要約"
 math: true
+toc: true
 ---
 
 ## markdown基本構文
@@ -104,6 +105,11 @@ But I must explain to you how all this mistaken idea of denouncing pleasure and 
 これはブロック数式: \\[ b=a \\]
 
 ## その他
+
+```python
+def foo(bar):
+  return baz
+```
 
 {{< info title="ABC" text="abc [Google](https://www.google.co.jp/)" >}}
 

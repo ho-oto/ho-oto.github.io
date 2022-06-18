@@ -19,7 +19,7 @@
     {{- with .Site.Params.favicon }}
     <link rel="icon" type="image/png" href="{{ . }}" />
     {{- end }}
-    {{- if or (.IsHome) ($.Param "math") }}
+    {{- if or (.IsHome) (.Params.math) }}
     <link rel="stylesheet" href="{{ .Site.BaseURL }}katex/katex.min.css" />
     <script defer src="{{ .Site.BaseURL }}katex/katex.min.js"></script>
     <script defer src="{{ .Site.BaseURL }}katex/auto-render.min.js"
