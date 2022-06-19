@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       TZ: "Asia/Tokyo"
-      HUGO_GA_ID: ${{ secrets.HUGO_GA_ID }}
     steps:
       - uses: actions/checkout@v2
         with:

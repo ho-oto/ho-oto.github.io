@@ -25,14 +25,11 @@
     <script defer src="{{ .Site.BaseURL }}katex/auto-render.min.js"
         onload="renderMathInElement(document.body);"></script>
     {{- end }}
-    {{- $ga := os.Getenv "HUGO_GA_ID" }}
-    {{- if $ga }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $ga }}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD2LBZFCR8"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ $ga }}');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KD2LBZFCR8');
     </script>
-    {{- end }}
 </head>
