@@ -20,10 +20,6 @@ url = "https://www.linkedin.com/in/ho-oto/"
 name = "GitHub"
 url = "https://github.com/ho-oto"
 
-[[params.social]]
-name = "Twitter"
-url = "https://twitter.com/h8t0"
-
 [[menu.main]]
 name = "All posts"
 url = "/blog"
