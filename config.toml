@@ -7,6 +7,7 @@ enableGitInfo = true
 [params]
 subtitle = "メモとか作業ログとか"
 mainSections = ["blog"]
+googleAnalytics = "G-KD2LBZFCR8"
 
 [frontmatter]
 date = ["date", ":git", "lastmod", "publishDate"]
