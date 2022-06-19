@@ -7,6 +7,7 @@
         "cython",
         "ebnf",
         "fishshell",
+        "Getenv",
         "hexdump",
         "idris",
         "lastmod",
