@@ -24,7 +24,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: set env
+      - name: Set env
         run: |
           echo "ISSUE_TITLE=$(gh issue view ${ISSUE} --json title --jq ".title")" >> $GITHUB_ENV
           [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "log")') = "true" ] && OUT_DIR=log
@@ -33,7 +33,7 @@ jobs:
           [ -z "${OUT_DIR}" ] && exit 1
           echo "OUT_DIR=${OUT_DIR}" >> $GITHUB_ENV
 
-      - name: check not duplicate
+      - name: Check not duplicate
         run: |
           ! test -f "content/${OUT_DIR}/${ISSUE_TITLE}.md"
 
@@ -43,18 +43,24 @@ jobs:
           $(gh issue view ${ISSUE} --json updatedAt --jq ".updatedAt") != \
           $(gh issue view ${ISSUE} --json createdAt --jq ".createdAt")
 
-      - name: make file
-        run: |
-          gh issue view ${ISSUE} --json body --jq ".body" > "content/${OUT_DIR}/${ISSUE_TITLE}.md"
-
       - name: commit and push
         run: |
           git config --local user.email "22756928+ho-oto@users.noreply.github.com"
           git config --local user.name "ho-oto"
+          gh issue view ${ISSUE} --json body --jq ".body" > "content/${OUT_DIR}/${ISSUE_TITLE}.md"
           git add "content/log/${ISSUE_TITLE}.md"
           git commit -m "$ISSUE_TITLE"
           git push origin main
 
-  deploy:
-    needs: push
-    uses: ./.github/workflows/gh-pages.yml
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      - name: Build
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./public
