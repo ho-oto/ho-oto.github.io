@@ -55,4 +55,5 @@ jobs:
           git commit -m "$ISSUE_TITLE"
           git push origin main
 
-      - uses: ./.github/workflows/gh-pages.yml
+  deploy:
+    uses: ./.github/workflows/gh-pages.yml
