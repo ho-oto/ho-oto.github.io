@@ -26,7 +26,8 @@ jobs:
           echo "ISSUE_BODY=$(gh issue view ${ISSUE} --json body --jq ".body")" >> $GITHUB_ENV
 
       - name: check not duplicate
-        run: ! test -f "content/log/${ISSUE_TITLE}.md"
+        run: |
+          ! test -f "content/log/${ISSUE_TITLE}.md"
 
       - name: check modified
         run: |
