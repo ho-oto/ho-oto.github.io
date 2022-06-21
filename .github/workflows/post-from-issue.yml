@@ -6,9 +6,13 @@ on:
       - "closed"
 
 jobs:
-  deploy:
+  push:
     runs-on: ubuntu-20.04
-    if: contains(github.event.issue.labels.*.name, 'log')
+
+    if: |
+      contains(github.event.issue.labels.*.name, 'log') ||
+      contains(github.event.issue.labels.*.name, 'note') ||
+      contains(github.event.issue.labels.*.name, 'blog')
 
     env:
       TZ: "Asia/Tokyo"
@@ -23,10 +27,15 @@ jobs:
       - name: set env
         run: |
           echo "ISSUE_TITLE=$(gh issue view ${ISSUE} --json title --jq ".title")" >> $GITHUB_ENV
+          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "log")') = "true" ] && OUT_DIR=log
+          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "note")') = "true" ] && OUT_DIR=note
+          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "blog")') = "true" ] && OUT_DIR=blog
+          [ -z "${OUT_DIR}" ] && exit 1
+          echo "OUT_DIR=${OUT_DIR}" >> $GITHUB_ENV
 
       - name: check not duplicate
         run: |
-          ! test -f "content/log/${ISSUE_TITLE}.md"
+          ! test -f "content/${OUT_DIR}/${ISSUE_TITLE}.md"
 
       - name: check modified
         run: |
@@ -37,7 +46,7 @@ jobs:
       - name: make file
         run: |
           echo $(gh issue view ${ISSUE} --json body --jq ".body") \
-          > "content/log/${ISSUE_TITLE}.md"
+          > "content/${OUT_DIR}/${ISSUE_TITLE}.md"
 
       - name: commit and push
         run: |
@@ -47,3 +56,4 @@ jobs:
           git commit -m "$ISSUE_TITLE"
           git push origin main
 
+      - uses: ./.github/workflows/gh-pages
