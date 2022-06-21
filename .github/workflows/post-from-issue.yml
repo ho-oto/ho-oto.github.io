@@ -45,8 +45,7 @@ jobs:
 
       - name: make file
         run: |
-          echo $(gh issue view ${ISSUE} --json body --jq ".body") \
-          > "content/${OUT_DIR}/${ISSUE_TITLE}.md"
+          gh issue view ${ISSUE} --json body --jq ".body" > "content/${OUT_DIR}/${ISSUE_TITLE}.md"
 
       - name: commit and push
         run: |
