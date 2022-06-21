@@ -1,0 +1,48 @@
+name: convert issue to post
+
+on:
+  issues:
+    types:
+      - "closed"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    if: contains(github.event.issue.labels.*.name, 'log')
+
+    env:
+      TZ: "Asia/Tokyo"
+      ISSUE: ${{ github.event.issue.html_url }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: set env
+        run: |
+          echo "ISSUE_TITLE=$(gh issue view ${ISSUE} --json title --jq ".title")" >> $GITHUB_ENV
+          echo "ISSUE_BODY=$(gh issue view ${ISSUE} --json body --jq ".body")" >> $GITHUB_ENV
+
+      - name: check not duplicate
+        run: ! test -f "content/log/${ISSUE_TITLE}.md"
+
+      - name: check modified
+        run: |
+          test \
+          $(gh issue view ${ISSUE} --json updatedAt --jq ".updatedAt") != \
+          $(gh issue view ${ISSUE} --json createdAt --jq ".createdAt")
+
+      - name: make file
+        run: |
+          echo $ISSUE_BODY > "content/log/${ISSUE_TITLE}.md"
+
+      - name: commit and push
+        run: |
+          git config --local user.email "22756928+ho-oto@users.noreply.github.com"
+          git config --local user.name "ho-oto"
+          git add "content/log/${ISSUE_TITLE}.md"
+          git commit -m "$ISSUE_TITLE"
+          git push origin main
+
