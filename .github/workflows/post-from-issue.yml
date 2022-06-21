@@ -23,7 +23,6 @@ jobs:
       - name: set env
         run: |
           echo "ISSUE_TITLE=$(gh issue view ${ISSUE} --json title --jq ".title")" >> $GITHUB_ENV
-          echo "ISSUE_BODY=$(gh issue view ${ISSUE} --json body --jq ".body")" >> $GITHUB_ENV
 
       - name: check not duplicate
         run: |
@@ -37,7 +36,8 @@ jobs:
 
       - name: make file
         run: |
-          echo $ISSUE_BODY > "content/log/${ISSUE_TITLE}.md"
+          echo "ISSUE_BODY=$(gh issue view ${ISSUE} --json body --jq ".body")" \
+          > "content/log/${ISSUE_TITLE}.md"
 
       - name: commit and push
         run: |
