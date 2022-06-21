@@ -51,17 +51,3 @@ jobs:
           git add "content/${OUT_DIR}/${ISSUE_TITLE}.md"
           git commit -m "$ISSUE_TITLE"
           git push origin main
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-
-      - name: Build
-        run: hugo
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
