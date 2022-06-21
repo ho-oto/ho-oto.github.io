@@ -13,7 +13,7 @@ jobs:
       ( contains(github.event.issue.labels.*.name, 'log')  ||
         contains(github.event.issue.labels.*.name, 'note') ||
         contains(github.event.issue.labels.*.name, 'blog') ) &&
-      contains(github.event.issue.labels.*.name, 'skip')
+      ( ! contains(github.event.issue.labels.*.name, 'skip') )
 
     env:
       TZ: "Asia/Tokyo"
