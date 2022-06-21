@@ -36,16 +36,16 @@ jobs:
           )
           gh issue create --label "log" --title "$DATE" --body "$BODY"
 
-  close:
-    needs: create
-    runs-on: ubuntu-20.04
-    permissions:
-      issues: write
-    steps:
-      - uses: actions/stale@v5
-        with:
-          only-issue-labels: "log"
-          days-before-issue-stale: 2
-          stale-issue-label: "skip"
-          days-before-issue-close: 3
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Close issue
+        run: |
+          for ISSUE in $(gh issue list -l "log" -s "open" --json number --jq ".[].number")
+          do
+            CREATED=$(gh issue view ${ISSUE} --json createdAt --jq ".createdAt|fromdate")
+            UPDATED=$(gh issue view ${ISSUE} --json updatedAt --jq ".updatedAt|fromdate")
+            [ $CREATED -eq $UPDATED ] && continue
+            TODAY=$(date "+%s")
+            if [ $(( ($TODAY - $CREATED) / (60 * 60 * 24) )) -gt 3 ]; then
+              gh issue edit ${ISSUE} --add-label "skip"
+              gh issue close ${ISSUE}
+            fi
+          done

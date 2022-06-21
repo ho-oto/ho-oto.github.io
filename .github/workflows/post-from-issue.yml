@@ -45,7 +45,8 @@ jobs:
           git config --local user.name "ho-oto"
 
           gh issue view ${ISSUE} --json body --jq ".body" > "${OUT_FILE}"
-          git add "${OUT_FILE}" && git commit -m "[bot] add ${ISSUE_TITLE}.md"
+          git add "${OUT_FILE}" || exit 0
+          git commit -m "[bot] add ${ISSUE_TITLE}.md"
           git push origin main
 
       - name: Setup Hugo
