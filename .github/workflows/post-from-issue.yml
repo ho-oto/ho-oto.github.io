@@ -33,17 +33,15 @@ jobs:
           [ -z "${OUT_DIR}" ] && exit 1
           echo "OUT_DIR=${OUT_DIR}" >> $GITHUB_ENV
 
-      - name: Check not duplicate
-        run: |
-          ! test -f "${OUT_DIR}/${ISSUE_TITLE}.md"
-
       - name: Check modified
+        id: modified
         run: |
           test \
           $(gh issue view ${ISSUE} --json updatedAt --jq ".updatedAt") != \
           $(gh issue view ${ISSUE} --json createdAt --jq ".createdAt")
 
       - name: Commit and push
+        if: steps.modified.conclusion == 'success'
         run: |
           git config --local user.email "22756928+ho-oto@users.noreply.github.com"
           git config --local user.name "ho-oto"
@@ -53,17 +51,17 @@ jobs:
           git push origin main
 
       - name: Setup Hugo
+        if: steps.modified.conclusion == 'success'
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
 
       - name: Build
+        if: steps.modified.conclusion == 'success'
         run: hugo
 
-      - name: Debug
-        run: ls public/log
-
       - name: Deploy
+        if: steps.modified.conclusion == 'success'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
