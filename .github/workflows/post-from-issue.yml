@@ -27,27 +27,27 @@ jobs:
       - name: Set env
         run: |
           echo "ISSUE_TITLE=$(gh issue view ${ISSUE} --json title --jq ".title")" >> $GITHUB_ENV
-          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "log")') = "true" ] && OUT_DIR=log
-          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "note")') = "true" ] && OUT_DIR=note
-          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "blog")') = "true" ] && OUT_DIR=blog
+          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "log")') = "true" ] && OUT_DIR=content/log
+          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "note")') = "true" ] && OUT_DIR=content/note
+          [ $(gh issue view ${ISSUE} --json labels --jq 'any(.labels[].name; . == "blog")') = "true" ] && OUT_DIR=content/blog
           [ -z "${OUT_DIR}" ] && exit 1
           echo "OUT_DIR=${OUT_DIR}" >> $GITHUB_ENV
 
       - name: Check not duplicate
         run: |
-          ! test -f "content/${OUT_DIR}/${ISSUE_TITLE}.md"
+          ! test -f "${OUT_DIR}/${ISSUE_TITLE}.md"
 
-      - name: check modified
+      - name: Check modified
         run: |
           test \
           $(gh issue view ${ISSUE} --json updatedAt --jq ".updatedAt") != \
           $(gh issue view ${ISSUE} --json createdAt --jq ".createdAt")
 
-      - name: commit and push
+      - name: Commit and push
         run: |
           git config --local user.email "22756928+ho-oto@users.noreply.github.com"
           git config --local user.name "ho-oto"
-          gh issue view ${ISSUE} --json body --jq ".body" > "content/${OUT_DIR}/${ISSUE_TITLE}.md"
-          git add "content/${OUT_DIR}/${ISSUE_TITLE}.md"
-          git commit -m "$ISSUE_TITLE"
+          gh issue view ${ISSUE} --json body --jq ".body" > "${OUT_DIR}/${ISSUE_TITLE}.md"
+          git add "${OUT_DIR}/${ISSUE_TITLE}.md"
+          git commit -m "[bot] add ${ISSUE_TITLE}.md"
           git push origin main
