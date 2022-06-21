@@ -1,4 +1,4 @@
-name: create issue
+name: manage issue
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  push:
+  create:
     runs-on: ubuntu-20.04
 
     env:
@@ -14,10 +14,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: Create issue
         run: |
           DATE=$(date "+%Y-%m-%d")
@@ -35,3 +31,17 @@ jobs:
           EOS
           )
           gh issue create --label "log" --title "$DATE" --body "$BODY"
+
+  close:
+    needs: create
+    runs-on: ubuntu-20.04
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/stale@v5
+        with:
+          only-issue-labels: "log"
+          days-before-issue-stale: 2
+          stale-issue-label: "skip"
+          days-before-issue-close: 3
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
