@@ -52,6 +52,19 @@ jobs:
           git commit -m "[bot] add ${ISSUE_TITLE}.md"
           git push origin main
 
-  deploy:
-    needs: push
-    uses: ./.github/workflows/gh-pages.yml
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      - name: Build
+        run: hugo
+
+      - name: Debug
+        run: ls public/log
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
