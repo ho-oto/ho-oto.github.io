@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-<pre>
+<!-- -->
 ---
 title: "title"
 description: "desc"
@@ -18,4 +18,3 @@ toc: true
 ---
 
 ## sample
-</pre>
