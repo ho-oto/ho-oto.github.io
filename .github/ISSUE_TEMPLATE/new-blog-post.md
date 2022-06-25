@@ -7,7 +7,6 @@ assignees: ''
 
 ---
 
-<!-- remove this line -->
 ---
 title: "title"
 description: "desc"
