@@ -7,7 +7,6 @@ assignees: ''
 
 ---
 
-<!-- -->
 ---
 title: "title"
 description: "desc"
