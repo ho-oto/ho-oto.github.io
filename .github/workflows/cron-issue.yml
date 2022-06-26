@@ -42,7 +42,7 @@ jobs:
           do
             CREATED=$(gh issue view ${ISSUE} --json createdAt --jq ".createdAt|fromdate")
             UPDATED=$(gh issue view ${ISSUE} --json updatedAt --jq ".updatedAt|fromdate")
-            [ $CREATED -eq $UPDATED ] && continue
+            [ $CREATED -ne $UPDATED ] && continue
             TODAY=$(date "+%s")
             if [ $(( ($TODAY - $CREATED) / (60 * 60 * 24) )) -gt 3 ]; then
               gh issue edit ${ISSUE} --add-label "skip"
