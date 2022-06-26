@@ -7,14 +7,13 @@ assignees: ''
 
 ---
 
-<!-- remove this line -->
----
-title: "title"
-description: "desc"
-tags: []
-tldr: "tldr"
-math: true
-toc: true
----
++++
+title = "title"
+description = "desc"
+tags = []
+tldr = "tldr"
+math = true
+toc = true
++++
 
 ## sample
