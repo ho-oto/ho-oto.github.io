@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Thu, 23 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ログ</title>
+      <link>https://ho-oto.github.io/log/2022-07-01/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ho-oto.github.io/log/2022-07-01/</guid>
+      <description>7月に入ったしいい加減にこの日記をちゃんと稼働させたい。
+やったこと WSL2用の環境構成スクリプトを整理していた。GitHub ActionsでCIを回してはいたけど、WSL上じゃないと使えないコマンドがあったり、CI上ではプリインストールされているソフトウェアがたくさんあって挙動が変わったりと、最後はローカルでデバッグするしかないのがつらい。
+Ubuntu-22.04がWindows Storeに来ていたのでそれを使ってデバッグしていた。Windows11に上げてWSLgが使えるようになった筈だが、メインの用途は外からSSH接続してあれこれすることなので、活かせるか謎だ。</description>
+    </item>
+    
     <item>
       <title>ログ</title>
       <link>https://ho-oto.github.io/log/2022-06-23/</link>
