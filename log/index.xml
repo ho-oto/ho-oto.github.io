@@ -10,6 +10,16 @@
     <lastBuildDate>Sun, 19 Jun 2022 00:10:33 +0900</lastBuildDate><atom:link href="https://ho-oto.github.io/log/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ログ</title>
+      <link>https://ho-oto.github.io/log/2022-07-21/</link>
+      <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ho-oto.github.io/log/2022-07-21/</guid>
+      <description>やったこと 月曜日からrustlingsをちびちび解いて、とりあえず全部解いた。一部、出題者の意図を正しく汲めているか不安な問題もあるけど。
+GitHubでスターをつけて満足してしまったハンズオンが無限に存在するので、真面目に向き合っていきたい。次はWrite yourself a Git!をなんか別言語で実装したい。</description>
+    </item>
+    
+    <item>
+      <title>ログ</title>
       <link>https://ho-oto.github.io/log/2022-07-02/</link>
       <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
       
