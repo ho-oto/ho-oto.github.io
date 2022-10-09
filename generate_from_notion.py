@@ -1,14 +1,15 @@
 import json
+import logging
+import os
 import re
 import subprocess
 import urllib.parse
-from urllib.request import Request, urlopen
-import os
 from pathlib import Path
+from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
 
-# TODO: add logging
+logging.basicConfig(level=logging.INFO)
 
 
 def embed_tag_exceptional(url: str):
@@ -31,13 +32,16 @@ def endpoint_by_providers(url: str):
 
 
 def endpoint_by_discovery(url: str):
+    logging.info(f"EMBED: try to use oembed discovery mechanism for {url}")
     try:
         with urlopen(url) as rsp:
             bs = BeautifulSoup(rsp.read(), "html.parser")
             for tag in bs.select("link"):
                 if tag.attrs.get("type", "") == "application/json+oembed":
+                    logging.info("EMBED: ↳success")
                     return tag.attrs["href"]
     except:
+        logging.info("EMBED: ↳failed")
         return None
 
 
@@ -46,6 +50,7 @@ def get_embed_tag(url: str):
         return tag
     if endpoint := endpoint_by_providers(url) or endpoint_by_discovery(url):
         try:
+            logging.info(f"EMBED: try to use oembed endpoint {url}")
             endpoint = urllib.parse.urlparse(endpoint)
             endpoint = urllib.parse.urlunparse(
                 (
@@ -60,8 +65,11 @@ def get_embed_tag(url: str):
                 )
             )
             with urlopen(Request(endpoint)) as rsp:
-                return str(json.loads(rsp.read())["html"])
+                tag = str(json.loads(rsp.read())["html"])
+                logging.info("EMBED: ↳success")
+                return tag
         except:
+            logging.info("EMBED: ↳failed")
             None
 
 
@@ -85,6 +93,7 @@ def download_notion_internal(bs: BeautifulSoup, target_dir: Path):
         new_tag.string = file_name
         new_tag.attrs["class"] = list(filter(lambda c: c != "internal", tag["class"]))
         tag.replace_with(new_tag)
+        logging.info(f"FILE: notion internal file {id} is downloaded")
     return bs
 
 
@@ -116,6 +125,7 @@ def get_posts(db: str, secret: str):
             start_cursor = body["next_cursor"]
         else:
             break
+    logging.info(f"total {len(posts)} posts were found")
     return posts
 
 
@@ -133,6 +143,9 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
                 or new_post[0]["properties"]["dir"]["select"]["name"]
                 != existing_dir.name
             ):
+                logging.info(
+                    f"delete removed/moved post {existing_dir.name}/{existing_id}"
+                )
                 for content in existing_post.iterdir():
                     if content.is_dir():
                         for file in content.iterdir():
@@ -151,14 +164,14 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
         post_index = post_dir / "index.html"
         if post_index.exists():
             with open(post_index, "r") as existing:
-                existing_html = existing.read()
-            front = re.compile(r"^{.*?^}", re.MULTILINE | re.DOTALL).match(
-                existing_html
-            )
+                ex_html = existing.read()
+            front = re.compile(r"^{.*?^}", re.MULTILINE | re.DOTALL).match(ex_html)
             if front:
                 meta = json.loads(front[0])
                 if meta.get("notion_last_edited", "") == notion_last_edited:
+                    logging.info(f"{dir}/{id} already exists")
                     continue
+            logging.info(f"{dir}/{id} is updated")
             for content in post_dir.iterdir():
                 if content.is_dir():
                     for file in content.iterdir():
@@ -166,6 +179,8 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
                     content.rmdir()
                 else:
                     content.unlink()
+
+        logging.info(f"generate {dir}/{id}")
 
         ast = subprocess.run(
             ["notion2pandoc", "-i", id, "-s", secret], capture_output=True
