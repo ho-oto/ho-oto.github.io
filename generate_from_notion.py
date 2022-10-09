@@ -153,6 +153,7 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
                         content.rmdir()
                     else:
                         content.unlink()
+                existing_post.rmdir()
 
     for post in posts:
         id: str = post["id"]
