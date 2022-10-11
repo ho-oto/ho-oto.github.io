@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <head>
-	<meta name="generator" content="Hugo 0.101.0" />
+	<meta name="generator" content="Hugo 0.104.3" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="" />
@@ -11,8 +11,25 @@
     <link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ho-oto.github.io/css/dark.css" disabled />
     <link rel="stylesheet" href="https://ho-oto.github.io/katex/katex.min.css" />
     <script defer src="https://ho-oto.github.io/katex/katex.min.js"></script>
-    <script defer src="https://ho-oto.github.io/katex/auto-render.min.js"
-        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+                var mathElements = document.getElementsByClassName("math");
+                for (var i = 0; i < mathElements.length; i++) {
+                    var texText = mathElements[i].firstChild;
+                    if (mathElements[i].tagName == "SPAN") {
+                        katex.render(
+                            texText.data, mathElements[i], {
+                                displayMode: mathElements[i].classList.contains('display'),
+                                throwOnError: false,
+                            }
+                        );
+                    }
+                }
+            }
+        );
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD2LBZFCR8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
