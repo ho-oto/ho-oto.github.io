@@ -2,7 +2,6 @@ name: generate from notion
 
 on:
   repository_dispatch:
-    types: [update_post]
 
 jobs:
   push:
