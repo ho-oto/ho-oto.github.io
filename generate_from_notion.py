@@ -59,7 +59,7 @@ def get_embed_tag(url: str):
                     endpoint.path,
                     None,
                     urllib.parse.urlencode(
-                        {"url": url, "format": "json", "maxwidth": "720"}
+                        {"url": url, "format": "json", "maxwidth": "680"}
                     ),
                     None,
                 )
