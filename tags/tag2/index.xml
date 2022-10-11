@@ -19,5 +19,15 @@ sed do aaa
 eiusmod eiusmod eiusmod eiusmod eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</description>
     </item>
     
+    <item>
+      <title>test</title>
+      <link>https://ho-oto.github.io/blog/da7e06ca-f5ef-4b8f-bedd-943c68f5514e/</link>
+      <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ho-oto.github.io/blog/da7e06ca-f5ef-4b8f-bedd-943c68f5514e/</guid>
+      <description>aaaa
+hoge.txt</description>
+    </item>
+    
   </channel>
 </rss>
