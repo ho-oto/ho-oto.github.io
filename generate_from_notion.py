@@ -186,7 +186,6 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
         ast = subprocess.run(
             ["notion2pandoc", "-i", id, "-s", secret], capture_output=True
         ).stdout
-        print(ast)
         ast_dict = json.loads(ast)
 
         html = subprocess.run(
@@ -194,7 +193,6 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
             input=ast,
             capture_output=True,
         ).stdout
-        print(html)
         bs = BeautifulSoup(html, "html.parser")
 
         title = "".join(map(lambda x: x["text"]["content"], props["title"]["title"]))

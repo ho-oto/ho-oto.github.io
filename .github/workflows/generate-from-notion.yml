@@ -16,7 +16,7 @@ jobs:
 
       - name: Python Setup
         run: |
-          pipx install poetry
+          pipx install poetry==1.2.1
           poetry install --no-root
 
       - name: Pandoc Setup
