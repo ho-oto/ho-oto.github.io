@@ -225,5 +225,6 @@ if __name__ == "__main__":
     SECRET = os.environ["NOTION_API_SECRET"]
     DB_ID = os.environ["NOTION_DB_UUID"]
     AUTHOR = os.environ["NOTION_AUTHOR"]
+    print(DB_ID)
     posts = get_posts(DB_ID, SECRET)
     generate(posts, CONTENTS_DIR, AUTHOR, SECRET)
