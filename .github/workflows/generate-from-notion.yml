@@ -21,8 +21,11 @@ jobs:
 
       - name: Pandoc Setup
         run: |
-          sudo apt-get -y install pandoc
+          curl https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb -Lo pandoc-2.19.2-1-amd64.deb
+          sudo dpkg -i pandoc-2.19.2-1-amd64.deb
+          pandoc --version
           cargo install notion2pandoc
+          notion2pandoc --version
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
