@@ -22,8 +22,25 @@
     {{- if or (.IsHome) (.Params.math) }}
     <link rel="stylesheet" href="{{ .Site.BaseURL }}katex/katex.min.css" />
     <script defer src="{{ .Site.BaseURL }}katex/katex.min.js"></script>
-    <script defer src="{{ .Site.BaseURL }}katex/auto-render.min.js"
-        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+                var mathElements = document.getElementsByClassName("math");
+                for (var i = 0; i < mathElements.length; i++) {
+                    var texText = mathElements[i].firstChild;
+                    if (mathElements[i].tagName == "SPAN") {
+                        katex.render(
+                            texText.data, mathElements[i], {
+                                displayMode: mathElements[i].classList.contains('display'),
+                                throwOnError: false,
+                            }
+                        );
+                    }
+                }
+            }
+        );
+    </script>
     {{- end }}
     {{- with .Site.Params.googleAnalytics }}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>

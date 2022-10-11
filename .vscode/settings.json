@@ -12,6 +12,7 @@
         "idris",
         "lastmod",
         "markdownify",
+        "oembed",
         "tldr"
     ]
 }

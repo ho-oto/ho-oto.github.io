@@ -1,0 +1,52 @@
+name: generate from notion
+
+on:
+  repository_dispatch:
+    types: [update_post]
+
+jobs:
+  push:
+    runs-on: ubuntu-22.04
+    env:
+      TZ: "Asia/Tokyo"
+
+    steps:
+      - name: Set env
+        run: |
+          sudo apt-get -y install pandoc
+          pipx install poetry
+          cargo install notion2pandoc
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: poetry install
+      - run: |
+          poetry install
+
+      - name: generate
+        run: |
+          ./.venv/bin/python generate_from_notion.py
+
+      - name: commit
+        run: |
+          git config --local user.email "22756928+ho-oto@users.noreply.github.com"
+          git config --local user.name "ho-oto"
+          git add -A content/* || exit 0
+          git commit -m "[bot] generate from notion"
+          git push origin main
+
+      - name: Build
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
