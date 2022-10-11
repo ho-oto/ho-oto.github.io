@@ -10,6 +10,10 @@ jobs:
       TZ: "Asia/Tokyo"
 
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Python Setup
         run: |
           pipx install poetry
@@ -24,10 +28,6 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "latest"
-
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: generate
         run: ./.venv/bin/python generate_from_notion.py
