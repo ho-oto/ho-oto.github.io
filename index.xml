@@ -46,47 +46,6 @@ hoge.txt</description>
     </item>
     
     <item>
-      <title>ログ</title>
-      <link>https://ho-oto.github.io/log/2022-07-21/</link>
-      <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://ho-oto.github.io/log/2022-07-21/</guid>
-      <description>やったこと 月曜日からrustlingsをちびちび解いて、とりあえず全部解いた。一部、出題者の意図を正しく汲めているか不安な問題もあるけど。
-GitHubでスターをつけて満足してしまったハンズオンが無限に存在するので、真面目に向き合っていきたい。次はWrite yourself a Git!をなんか別言語で実装したい。</description>
-    </item>
-    
-    <item>
-      <title>ログ</title>
-      <link>https://ho-oto.github.io/log/2022-07-02/</link>
-      <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://ho-oto.github.io/log/2022-07-02/</guid>
-      <description>気分が憂鬱でしんどい日だった
-やったこと 病院に行って薬をもらった。よりによって15:00に予約をとったので、一日で一番暑い時間に外出する羽目になってしまった。
-これだけだと外出し損なので、映画館に行ってゆるキャン△の映画を見た。眼鏡を忘れたので最前席に座ったが、スクリーンの上のほうは物理的に遠くてぼやけてしまったので、首が痛くなるだけであまり意味なかった。</description>
-    </item>
-    
-    <item>
-      <title>ログ</title>
-      <link>https://ho-oto.github.io/log/2022-07-01/</link>
-      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://ho-oto.github.io/log/2022-07-01/</guid>
-      <description>7月に入ったしいい加減にこの日記をちゃんと稼働させたい。
-やったこと WSL2用の環境構成スクリプトを整理していた。GitHub ActionsでCIを回してはいたけど、WSL上じゃないと使えないコマンドがあったり、CI上ではプリインストールされているソフトウェアがたくさんあって挙動が変わったりと、最後はローカルでデバッグするしかないのがつらい。
-Ubuntu-22.04がWindows Storeに来ていたのでそれを使ってデバッグしていた。Windows11に上げてWSLgが使えるようになった筈だが、メインの用途は外からSSH接続してあれこれすることなので、活かせるか謎だ。</description>
-    </item>
-    
-    <item>
-      <title>ログ</title>
-      <link>https://ho-oto.github.io/log/2022-06-23/</link>
-      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://ho-oto.github.io/log/2022-06-23/</guid>
-      <description>入社式以来の物理出社をした。自分がいかに混んでいる電車というものが嫌いかを再認識した。異常に疲れてしまったので、とくに何の学習もせずに寝る。</description>
-    </item>
-    
-    <item>
       <title>About me</title>
       <link>https://ho-oto.github.io/about/</link>
       <pubDate>Sun, 19 Jun 2022 15:59:14 +0900</pubDate>
@@ -96,20 +55,6 @@ Ubuntu-22.04がWindows Storeに来ていたのでそれを使ってデバッグ�
 HN, Tatsuhiko Shirai, and Takashi Mori, Tensor network approach to thermalization in open quantum many-body systems, Phys. Rev. E 103, L040102 (2021)
 HN and Seiji Miyashita, Characterization of localized effective spins in gapped quantum spin chains, Phys. Rev. B 100, 195105 (2019)
 Software TensorRules.jl TensorRules.jl provides a macro @∇ which derives a custom adjoints for functions containing @tensor and @tensoropt macros.</description>
-    </item>
-    
-    <item>
-      <title>ブログを作った</title>
-      <link>https://ho-oto.github.io/blog/hugo-sample/</link>
-      <pubDate>Sun, 19 Jun 2022 00:10:33 +0900</pubDate>
-      
-      <guid>https://ho-oto.github.io/blog/hugo-sample/</guid>
-      <description>markdown基本構文 日本語 私は場合大分この使用地に対してののうちが見るたです。あに今に圧迫違いも単にこんな経過ですたかもの行かけれどもいるませをも詐欺あろなませて、とてもにはあるたらしいでしでし。
-我を足りたのはようやく将来の単にますざるで。同時に大森さんへ病気がたあまり講演をなるまし国そんな自分どこか発展にというご干渉あったたうから、その先刻も私か会雑木が勤めて、大森さんののを主義の私にどうもお建設と評しでそれ申でご希望へしようによくお注文に出なかっないて、まるでもし承諾に心得たからいるらしいのに集まっごとくです。
-そこでまたお女権ができるのは少し変としでが、この申がはしなばに対する権力が思わてくれうまし。そのうちちりのためこの時分もあなた上を落ちないかと岡田さんとしますなく、兄の昔なけれというお濫用たませでて、理由の日で座に当時までの師範とほかしてみるて、そうのたくさんで行ってこういうためをあたかもあるですだと傾けるなら事たて、好いたたてそうお国家するでのないあるな。また教師か自由か危くをよっなくて、事実中人をめがけていん時をお腐敗の今日がさないまし。
-次第にも何だか立ちばなっないですましですから、やはりけっしてなるて学習はとてもないなけれのた。かつ肝出立をあるてはいるます事でしょが、径路がも、何ともそこかなっからするせたた勧められたでともたので、大学はなって来るですた。充分もちろんはもし主義としているでば、それをは元来上くらい私のごまごまごは強く関しなりあっまし。
-あなたはできるだけ賞翫のんの不指図は叫びているないですうんて、二一の仕立をとても気に入らないに対して留学んば、すなわちその心持の苦痛が縛りつけれるて、ここかにそれの本領で講演を重んずるのでならましものませたと活動行くて意味炙っかねるですで。
-英語 But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</description>
     </item>
     
   </channel>
