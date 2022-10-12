@@ -2,10 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ho-oto.github.io/log/09f56cd7-8375-479a-aacc-79d54380ada6/</loc>
-    <lastmod>2022-07-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ho-oto.github.io/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ho-oto.github.io/blog/06a3b25d-f9b8-4534-8661-af0039d245a9/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ho-oto.github.io/tags/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ho-oto.github.io/tags/web/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ho-oto.github.io/log/09f56cd7-8375-479a-aacc-79d54380ada6/</loc>
     <lastmod>2022-07-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ho-oto.github.io/log/79c76885-5d41-4f54-95a7-e3c950024b23/</loc>
@@ -30,7 +39,5 @@
     <lastmod>2022-06-19T00:10:33+09:00</lastmod>
   </url><url>
     <loc>https://ho-oto.github.io/categories/</loc>
-  </url><url>
-    <loc>https://ho-oto.github.io/tags/</loc>
   </url>
 </urlset>

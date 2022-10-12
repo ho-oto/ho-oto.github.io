@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>記事一覧 on Cacao&#39;s repaying</title>
-    <link>https://ho-oto.github.io/blog/</link>
-    <description>Recent content in 記事一覧 on Cacao&#39;s repaying</description>
+    <title>Web on Cacao&#39;s repaying</title>
+    <link>https://ho-oto.github.io/tags/web/</link>
+    <description>Recent content in Web on Cacao&#39;s repaying</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Sun, 19 Jun 2022 00:10:33 +0900</lastBuildDate><atom:link href="https://ho-oto.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>sample post</title>
       <link>https://ho-oto.github.io/blog/06a3b25d-f9b8-4534-8661-af0039d245a9/</link>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do aaa
+eiusmod eiusmod eiusmod eiusmod eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo
+consequat. Duis aute irure
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+fn foo() -&gt; bool { true } dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
+    <title>sample post - Cacao&#39;s repaying</title>
+    <link rel="stylesheet" type="text/css" href="https://ho-oto.github.io/css/main.css" />
+    <link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ho-oto.github.io/css/dark.css" disabled />
+    <link rel="stylesheet" href="https://ho-oto.github.io/katex/katex.min.css" />
+    <script defer src="https://ho-oto.github.io/katex/katex.min.js"></script>
+    <script>
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+                var mathElements = document.getElementsByClassName("math");
+                for (var i = 0; i < mathElements.length; i++) {
+                    var texText = mathElements[i].firstChild;
+                    if (mathElements[i].tagName == "SPAN") {
+                        katex.render(
+                            texText.data, mathElements[i], {
+                                displayMode: mathElements[i].classList.contains('display'),
+                                throwOnError: false,
+                            }
+                        );
+                    }
+                }
+            }
+        );
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KD2LBZFCR8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KD2LBZFCR8');
+    </script>
+</head>
+
+<body>
+<div class="content">
+
+<header>
+    <div class="main">
+        <a href="https://ho-oto.github.io/">Cacao&#39;s repaying</a>
+        <div><span>メモとか作業ログとか</span></div>
+    </div>
+    <nav>
+        <a href="/blog">All posts</a><a href="/note">Note</a><a href="/log">Log</a><a href="/tags">Tags</a><a href="/about">About</a><a id="dark-mode-toggle"
+            onclick="toggleTheme()" href=""></a>
+        <script>
+            let setTheme = mode => {
+                localStorage.setItem("theme-storage", mode);
+                document.getElementById("darkModeStyle").disabled = mode !== "dark";
+                document.getElementById("dark-mode-toggle").innerHTML = mode === "dark" ? "&#x263C;" : "&#x263D;";
+            }
+            let toggleTheme = () => {
+                switch (localStorage.getItem("theme-storage")) {
+                    case "light": setTheme("dark"); break;
+                    case "dark": setTheme("light"); break;
+                }
+            }
+            setTheme(localStorage.getItem("theme-storage") || "light");
+        </script>
+    </nav>
+</header>
+
+<main>
+<article>
+
+<div class="post_title_block">
+    <h1>sample post</h1>
+    <div class="meta">posted on <time datetime="2022-10-13">2022/10/13</time></div>
+    
+</div>
+
+
+
+<section class="body">
+<p>Lorem <strong>ips</strong><a href="https://www.notion.so"><strong>um</strong></a><a href="https://www.notion.so"> </a><a href="https://www.notion.so"><em>do</em></a><em>lor</em> <em>sit</em>
+<del>am</del><del><strong>et</strong></del><strong>,
+</strong><strong><code>conse</code></strong><code>ctetur</code> <span class="math inline">adipiscing</span> <a href="http://google.com">elit</a>,</p>
+<ul>
+<li>sed do
+<p>aaa</p>
+<ul>
+<li>eiusmod</li>
+<li>eiusmod</li>
+<li>eiusmod</li>
+<li>eiusmod
+<ul>
+<li>eiusmod</li>
+</ul></li>
+</ul>
+<ol type="1">
+<li>tempor</li>
+<li>incididunt ut labore
+<ol type="1">
+<li>et dolore
+<ol type="1">
+<li></li>
+</ol>
+<ul class="task-list">
+<li><input disabled="" type="checkbox"/>magna aliqua.</li>
+<li><input checked="" disabled="" type="checkbox"/>Ut</li>
+</ul></li>
+</ol>
+<p>enim ad minim veniam,</p></li>
+</ol></li>
+</ul>
+<h2>quis</h2>
+<h3>nostrud exercitation</h3>
+<h4>ullamco</h4>
+<p>laboris nisi ut</p>
+<h3>aliquip</h3>
+<p>ex ea commodo</p>
+<p>consequat. Duis aute irure</p>
+<hr/>
+<p>            proident, sunt in culpa qui officia deserunt mollit anim
+id est laborum.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="kw">fn</span> foo() <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb1-2"><a aria-hidden="true" href="#cb1-2" tabindex="-1"></a>	<span class="cn">true</span></span>
+<span id="cb1-3"><a aria-hidden="true" href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>dolor</th>
+<th>in</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reprehenderit</td>
+<td>in</td>
+</tr>
+<tr class="even">
+<td><del><em>voluptate</em></del></td>
+<td><strong>velit</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>esse cillum </td>
+<td></td>
+<td>dolore</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>eu fugiat nulla pariatur. </td>
+<td>Excepteur sint occaecat</td>
+<td>Excepteur</td>
+</tr>
+<tr class="odd">
+<td>sint</td>
+<td>occaecat</td>
+<td>cupidatat</td>
+<td>non</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\int_{-\infty}^{\infty}
+\mathrm{d}x\  e^{-\alpha x^2}=\sqrt{\frac{\pi}{\alpha}}</span></p>
+<blockquote>
+quote
+quote
+<blockquote>
+quote
+</blockquote>
+</blockquote>
+<p><a href="https://github.com/ho-oto/ho-oto.github.io">https://github.com/ho-oto/ho-oto.github.io</a></p>
+<blockquote>
+quote
+</blockquote>
+<p><a class="embed" href="https://google.com">https://google.com</a></p>
+<div class="callout">
+callout <strong>callout</strong>
+</div>
+<p><a href="https://www.notion.so/">https://www.notion.so/</a></p>
+<p><a class="embed" href="https://www.notion.so/">https://www.notion.so/</a></p>
+<div class="link_to_page" id="c90565cf-4ae6-4e3d-bfdb-b9140b1f8b04">
+</div>
+<p><a data-flickr-embed="true" href="https://www.flickr.com/photos/bees/2362225867/" title="Bacon Lollys by ‮‭‬bees‬, on Flickr"><img alt="Bacon Lollys" height="480" src="https://live.staticflickr.com/3040/2362225867_4a87ab8baf_z.jpg" width="640"/></a><script async="" charset="utf-8" src="https://embedr.flickr.com/assets/client-code.js"></script></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="200" src="https://www.youtube.com/embed/4bIFZ32tLFQ?feature=oembed" title="TVアニメ「Extreme Hearts」｜「Extreme Hearts S×S×S」#12 ex「RISE×これからの未来」" width="356"></iframe></p>
+<p><script src="https://gist.github.com/ho-oto/8e0a67b8dcb495861b8837291307b8fb.js"></script></p>
+<p><a class="file" href="f6c85d26-0fb8-48f9-867b-0e4de84aec36/hoge.txt">hoge.txt</a></p>
+</section>
+
+<div>
+    <nav class="tags">
+        <ul class="tag">
+            <li><a href="https://ho-oto.github.io/tags/web/">Web</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+
+</article>
+</main>
+
+<footer>
+    <a class="social" href="https://www.linkedin.com/in/ho-oto/">LinkedIn</a><a class="social" href="https://github.com/ho-oto">GitHub</a><span>© Hayate Nakano 2022, Powered by <a href="https://gohugo.io">Hugo</a></span>
+</footer>
+
+</div>
+</body>
+
+</html>
