@@ -2,26 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ho-oto.github.io/log/09f56cd7-8375-479a-aacc-79d54380ada6/</loc>
+    <lastmod>2022-07-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ho-oto.github.io/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ho-oto.github.io/log/adaac84b-4bef-484f-8f93-8045394ef2e5/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <loc>https://ho-oto.github.io/log/79c76885-5d41-4f54-95a7-e3c950024b23/</loc>
+    <lastmod>2022-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ho-oto.github.io/tags/tag1/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <loc>https://ho-oto.github.io/log/1710de01-e0e1-462b-b65e-9485288a7799/</loc>
+    <lastmod>2022-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ho-oto.github.io/tags/tag2/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ho-oto.github.io/tags/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ho-oto.github.io/log/06a3b25d-f9b8-4534-8661-af0039d245a9/</loc>
-    <lastmod>2022-10-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ho-oto.github.io/blog/da7e06ca-f5ef-4b8f-bedd-943c68f5514e/</loc>
-    <lastmod>2022-10-02T00:00:00+00:00</lastmod>
+    <loc>https://ho-oto.github.io/log/a37a4753-21fc-466e-b71c-1ae3d49063bb/</loc>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ho-oto.github.io/about/</loc>
     <lastmod>2022-06-19T15:59:14+09:00</lastmod>
@@ -36,5 +30,7 @@
     <lastmod>2022-06-19T00:10:33+09:00</lastmod>
   </url><url>
     <loc>https://ho-oto.github.io/categories/</loc>
+  </url><url>
+    <loc>https://ho-oto.github.io/tags/</loc>
   </url>
 </urlset>
