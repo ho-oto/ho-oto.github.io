@@ -46,8 +46,8 @@ jobs:
         run: |
           git config --local user.email "22756928+ho-oto@users.noreply.github.com"
           git config --local user.name "ho-oto"
-          git add -A content/* || exit 0
-          git commit -m "[bot] generate from notion"
+          git add -A content/*
+          git commit -m "[bot] generate from notion" || exit 0
           git push origin main
 
       - name: Build
