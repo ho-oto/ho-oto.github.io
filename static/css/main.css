@@ -331,47 +331,33 @@ code {
 }
 
 /* info/warn block */
-.info,
-.warn {
+.callout {
     color: var(--color-white);
     padding: 7.5px;
     margin: 1rem 0;
 }
 
-.info {
+.callout {
     background-color: var(--color-main);
 }
 
-.warn {
-    background-color: var(--color-warn);
-}
-
-.info p,
-.warn p {
+.callout p {
     margin: 0;
 }
 
-.info h3,
-.warn h3 {
+.callout h3 {
     margin-top: 0;
 }
 
-.info h3::before,
-.warn h3::before {
+.callout h3::before {
     content: none;
 }
 
-.info a,
-.warn a {
+.callout a {
     border-bottom: 3px solid var(--color-white);
 }
 
-.warn a:hover {
-    background-color: var(--color-white);
-    color: var(--color-warn);
-}
-
-.info a:hover {
+.callout a:hover {
     background-color: var(--color-white);
     color: var(--color-main)
 }
