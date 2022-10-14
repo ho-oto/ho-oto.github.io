@@ -3,6 +3,8 @@ title = "Cacao's repaying"
 copyright = "© Hayate Nakano"
 languageCode = 'ja'
 enableGitInfo = true
+hasCJKLanguage = true
+summaryLength = 140
 
 [params]
 subtitle = "メモとか作業ログとか"
