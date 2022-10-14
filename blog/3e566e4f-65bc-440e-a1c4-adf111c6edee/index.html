@@ -4,28 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="このブログを作ったときは、GithubのissueをCMSとして使うような仕組みにしていたのだが、思っていた以上に管理がやりにくかったので、Notionを使うように変更した。ベッドで寝転がりながら編集したりすることを考えると、アプリの完成度が高いNotionが最適解かなという気がしたので。
-NotionをCMSに使ったブログシステムというのは探すと色々出てくるが、せっかくなので自作することにしたら思っていたよりも面倒だった。
-面倒だったとこ ページ全体を返すAPIが無い まず面倒なのが、Notionはページの内容をmarkdownやHTMLとして返すようなAPIを（公式には）公開していないという点。Webからならば使えるので、非公式なAPIを叩けばできるのかもしれないが、いつ変更が入るかも分からないので使いたくはない。
-APIから取得できるのはNotionのブロックオブジェクトの配列である。ブロックオブジェクトは子要素を持つ場合があるが、その場合は子要素を取得するために再度APIを叩く必要がある。
-ページを構成するすべての要素を取得できれば、あとはそれをページとして再構成することになるが、自作すると必ず文字列のエスケープ等でバグらせると思ったので、NotionのページをPandocのASTに変換するRust製ツール
-https://github.com/ho-oto/notion2pandoc
-を自作した。まあまあ苦労したので、Zennにも投稿したらそれなりには反応があって良かった。
-https://zenn.dev/ho_oto/articles/7ff736187aa16f
-PandocのASTがあれば、そこから好きな形式のドキュメントに変換するのは簡単にできる。
-ただし、NotionのembedブロックやcalloutブロックなどはPandocASTに対応物が無いので、とりあえずdiv要素に変換しておいて、後で処理する必要がある。特に面倒なのがembed要素。
-Twitter等の埋め込み対応 markdownを直接書いてHugoで変換する場合には、Hugoのshortcode機能を使って{{&lt; twitter id=123 &gt;}}のように書くことでTwitterの埋め込みを作ったりできる（構文うろ覚え）。これは裏でtwitterの埋め込み用HTMLタグを返すAPIを叩くようになっている。この埋め込みタグを返すAPIにはoEmbedという規格が決まっており、oEmbed APIを提供しているサービス一覧がまとまっているjsonファイルも公開されている（が全てを網羅しているわけでは無い）。
-ということで、Notionのembedブロックについては、oEmbed APIを使ってタグの取得を試み、うまく行かないときには単なるリンクとして表示するようにした。
-この他にも細々とした処理を色々とPythonで書いたスクリプトがあり、これをGithub Actionsで実行することでNotionとGithubリポジトリの内容が同期されるようになっている。
-https://github.com/ho-oto/ho-oto.github.io/blob/main/generate_from_notion.py
-NotionからWebhookを使う ここで問題になるのが、このActionをどのように発火させるかという話だった。CMSとして提供されているサービスであれば、記事の更新に合わせてWebhookを叩くような機能があるが、Notionには（おそらく）無い。であれば、Actionを起動するためのリンクをどこかに用意しておいて、クリックするだけで記事が更新されるようにするのが良さそう。
-最初はIFTTTのWebhook機能を使えば解決かと思っていたのだが、手元からは通るリクエストがIFTTTからだと動かず、調べてみるとGithub側がIFTTTからのリクエストを遮断しているっぽい。結局Google App Scriptを使って、GETするとActionが発火するだけのAPIを作って解決した。
-公開日と最終変更日をどうするか ブログであれば公開日と最終変更日を表示したいわけだが、Notionに公開日という概念は無い。あるのは作成日時、言い換えれば執筆開始日時である。最終変更日時という概念はあるのだが、例えば昔の記事を確認したときブロックの位置を少し動かしてしまった、みたいな変更でも更新扱いになるので、正直扱いにくい。
-ここについては諦めて、記事を保存しているDBのカラムに公開日と最終更新日を手動で入れるための領域を作った。まあ、大した手間じゃ無いしいいでしょう。
-まとめ ブログをNotionをCMSとして使うように作り直した。無駄にPandocのAPIに詳しくなってしまったので、そのうち役に立つ日が来ることを願うばかりである。
-なお、諸々のコードは
-https://github.com/ho-oto/ho-oto.github.io
-に置いてある。" />
+    <meta name="description" content="このブログを作ったときは、GithubのissueをCMSとして使うような仕組みにしていたのだが、思っていた以上に管理がやりにくかったので、Notionを使うように変更した。ベッドで寝転がりながら編集したりすることを考えると、アプリの完成度が高いNotionが最適解かなという気が" />
     <title>ブログを作り直した - Cacao&#39;s repaying</title>
     <link rel="stylesheet" type="text/css" href="https://ho-oto.github.io/css/main.css" />
     <link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://ho-oto.github.io/css/dark.css" disabled />
