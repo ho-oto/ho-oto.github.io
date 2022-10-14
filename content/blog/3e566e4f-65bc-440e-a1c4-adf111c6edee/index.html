@@ -1,0 +1,45 @@
+{
+  "title": "\u30d6\u30ed\u30b0\u3092\u4f5c\u308a\u76f4\u3057\u305f",
+  "tags": [
+    "Web"
+  ],
+  "author": "Hayate Nakano",
+  "math": false,
+  "toc": false,
+  "date": "2022-10-14",
+  "lastmod": "2022-10-14",
+  "notion_last_edited": "2022-10-14T12:43:00.000Z"
+}
+<p>このブログを作ったときは、GithubのissueをCMSとして使うような仕組みにしていたのだが、思っていた以上に管理がやりにくかったので、Notionを使うように変更した。ベッドで寝転がりながら編集したりすることを考えると、アプリの完成度が高いNotionが最適解かなという気がしたので。</p>
+<p>NotionをCMSに使ったブログシステムというのは探すと色々出てくるが、せっかくなので自作することにしたら思っていたよりも面倒だった。</p>
+<h2>面倒だったとこ</h2>
+<h3>ページ全体を返すAPIが無い</h3>
+<p>まず面倒なのが、Notionはページの内容をmarkdownやHTMLとして返すようなAPIを（公式には）公開していないという点。Webからならば使えるので、非公式なAPIを叩けばできるのかもしれないが、いつ変更が入るかも分からないので使いたくはない。</p>
+<p>APIから取得できるのはNotionのブロックオブジェクトの配列である。ブロックオブジェクトは子要素を持つ場合があるが、その場合は子要素を取得するために再度APIを叩く必要がある。</p>
+<p>ページを構成するすべての要素を取得できれば、あとはそれをページとして再構成することになるが、自作すると必ず文字列のエスケープ等でバグらせると思ったので、NotionのページをPandocのASTに変換するRust製ツール</p>
+<p><a href="https://github.com/ho-oto/notion2pandoc">https://github.com/ho-oto/notion2pandoc</a></p>
+<p>を自作した。まあまあ苦労したので、Zennにも投稿したらそれなりには反応があって良かった。</p>
+<p><a class="embed" href="https://zenn.dev/ho_oto/articles/7ff736187aa16f">https://zenn.dev/ho_oto/articles/7ff736187aa16f</a></p>
+<p>PandocのASTがあれば、そこから好きな形式のドキュメントに変換するのは簡単にできる。</p>
+<p>ただし、NotionのembedブロックやcalloutブロックなどはPandocASTに対応物が無いので、とりあえずdiv要素に変換しておいて、後で処理する必要がある。特に面倒なのがembed要素。</p>
+<h3>Twitter等の埋め込み対応</h3>
+<p>markdownを直接書いてHugoで変換する場合には、Hugoのshortcode機能を使って<code>{{&lt; twitter id=123 &gt;}}</code>のように書くことでTwitterの埋め込みを作ったりできる（構文うろ覚え）。これは裏でtwitterの埋め込み用HTMLタグを返すAPIを叩くようになっている。この埋め込みタグを返すAPIには<a href="https://oembed.com/">oEmbed</a>という規格が決まっており、oEmbed
+APIを提供しているサービス一覧がまとまっているjsonファイルも公開されている（が全てを網羅しているわけでは無い）。</p>
+<p>ということで、Notionのembedブロックについては、oEmbed
+APIを使ってタグの取得を試み、うまく行かないときには単なるリンクとして表示するようにした。</p>
+<p>この他にも細々とした処理を色々とPythonで書いたスクリプトがあり、これをGithub
+Actionsで実行することでNotionとGithubリポジトリの内容が同期されるようになっている。</p>
+<p><a class="embed" href="https://github.com/ho-oto/ho-oto.github.io/blob/main/generate_from_notion.py">https://github.com/ho-oto/ho-oto.github.io/blob/main/generate_from_notion.py</a></p>
+<h3>NotionからWebhookを使う</h3>
+<p>ここで問題になるのが、このActionをどのように発火させるかという話だった。CMSとして提供されているサービスであれば、記事の更新に合わせてWebhookを叩くような機能があるが、Notionには（おそらく）無い。であれば、Actionを起動するためのリンクをどこかに用意しておいて、クリックするだけで記事が更新されるようにするのが良さそう。</p>
+<p>最初はIFTTTのWebhook機能を使えば解決かと思っていたのだが、手元からは通るリクエストがIFTTTからだと動かず、調べてみるとGithub側がIFTTTからのリクエストを遮断しているっぽい。結局Google
+App
+Scriptを使って、GETするとActionが発火するだけのAPIを作って解決した。</p>
+<h3>公開日と最終変更日をどうするか</h3>
+<p>ブログであれば公開日と最終変更日を表示したいわけだが、Notionに公開日という概念は無い。あるのは作成日時、言い換えれば執筆開始日時である。最終変更日時という概念はあるのだが、例えば昔の記事を確認したときブロックの位置を少し動かしてしまった、みたいな変更でも更新扱いになるので、正直扱いにくい。</p>
+<p>ここについては諦めて、記事を保存しているDBのカラムに公開日と最終更新日を手動で入れるための領域を作った。まあ、大した手間じゃ無いしいいでしょう。</p>
+<h2>まとめ</h2>
+<p>ブログをNotionをCMSとして使うように作り直した。無駄にPandocのAPIに詳しくなってしまったので、そのうち役に立つ日が来ることを願うばかりである。</p>
+<p>なお、諸々のコードは</p>
+<p><a href="https://github.com/ho-oto/ho-oto.github.io">https://github.com/ho-oto/ho-oto.github.io</a></p>
+<p>に置いてある。</p>
