@@ -21,14 +21,6 @@
     {{- end }}
 </div>
 
-{{ if .Params.toc -}}
-<!-- Currently, Hugo supports .TableOfContents only for Markdown and Asciidoc...
-<aside>
-    {{ .TableOfContents }}
-</aside>
--->
-{{- end }}
-
 <section class="body">
 {{ .Content -}}
 </section>

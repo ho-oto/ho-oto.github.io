@@ -91,11 +91,6 @@ h6::before {
     content: '###### ';
 }
 
-aside {
-    border-top: 2px dotted var(--color-main);
-    border-bottom: 2px dotted var(--color-main);
-}
-
 /* list config */
 ul {
     list-style: disc outside;
@@ -284,6 +279,9 @@ footer span a {
 
 .toc {
     margin-bottom: 2.4rem;
+    border-top: 2px dotted var(--color-main);
+    border-bottom: 2px dotted var(--color-main);
+    padding-bottom: 2px;
 }
 
 /* images */

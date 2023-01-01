@@ -80,6 +80,65 @@ def convert_embed(bs: BeautifulSoup):
     return bs
 
 
+def generate_toc(bs: BeautifulSoup):
+    ids: set[str] = set()
+    toc = []
+    for tag in bs.select("h2, h3"):
+        text = tag.get_text()
+        id = text if (text and (text not in ids)) else str()
+        if not id:
+            suffix = 0
+            while True:
+                id = f"{text}_{suffix}"
+                if id not in ids:
+                    break
+                suffix += 1
+        ids.add(id)
+        tag["id"] = id
+        elm = {"text": text, "id": id, "children": []}
+        if tag.name == "h2":
+            toc.append(elm)
+        else:
+            if not toc:
+                toc.append(
+                    {
+                        "text": None,
+                        "id": None,
+                        "children": [elm],
+                    }
+                )
+            else:
+                toc[-1]["children"].append(elm)
+    if len(toc) == 1 and toc[0]["text"] is None:
+        toc = toc[0]["children"]
+
+    toc_bs = BeautifulSoup()
+    nav = toc_bs.new_tag("nav")
+    nav.attrs["class"] = "toc"
+    toc_bs.append(nav)
+    for item in toc:
+        if item["text"]:
+            ul = toc_bs.new_tag("ul")
+            nav.append(ul)
+            li = toc_bs.new_tag("li")
+            ul.append(li)
+            a = toc_bs.new_tag("a", href="#" + item["id"])
+            li.append(a)
+            a.append(item["text"])
+            if item["children"]:
+                ul_children = toc_bs.new_tag("ul")
+                li.append(ul_children)
+                for child in item["children"]:
+                    li = toc_bs.new_tag("li")
+                    ul_children.append(li)
+                    a = toc_bs.new_tag("a", href="#" + child["id"])
+                    li.append(a)
+                    a.append(child["text"])
+
+    bs.insert(0, toc_bs)
+    return bs
+
+
 def download_notion_internal(bs: BeautifulSoup, target_dir: Path):
     for tag in bs.select(".internal"):
         file_url = tag.attrs["href"]
@@ -207,7 +266,6 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
             "tags": tags,
             "author": author,
             "math": math,
-            "toc": toc,
             "date": date,
             "lastmod": lastmod,
             "notion_last_edited": notion_last_edited,
@@ -215,6 +273,8 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
 
         post_dir.mkdir(parents=True, exist_ok=True)
         bs = convert_embed(bs)
+        if toc:
+            bs = generate_toc(bs)
         bs = download_notion_internal(bs, post_dir)
         with open(post_index, "w") as index:
             index.write(f"{json.dumps(front_matter, indent=2)}\n{bs.decode()}")
