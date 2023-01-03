@@ -277,11 +277,15 @@ footer span a {
     margin-bottom: 1rem;
 }
 
-.toc {
+/* table of contents */
+nav.toc {
     margin-bottom: 2.4rem;
     border-top: 2px dotted var(--color-main);
     border-bottom: 2px dotted var(--color-main);
-    padding-bottom: 2px;
+}
+
+nav.toc a {
+    border-bottom: none;
 }
 
 /* images */
