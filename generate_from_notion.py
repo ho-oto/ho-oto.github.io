@@ -135,8 +135,7 @@ def generate_toc(bs: BeautifulSoup):
                     li.append(a)
                     a.append(child["text"])
 
-    bs.insert(0, toc_bs)
-    return bs
+    return bs, toc_bs
 
 
 def download_notion_internal(bs: BeautifulSoup, target_dir: Path):
@@ -273,11 +272,16 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
 
         post_dir.mkdir(parents=True, exist_ok=True)
         bs = convert_embed(bs)
-        if toc:
-            bs = generate_toc(bs)
         bs = download_notion_internal(bs, post_dir)
+        output_str = json.dumps(front_matter, indent=2)
+        if toc:
+            bs, bs_toc = generate_toc(bs)
+            output_str += f"\n{bs_toc.decode()}\n{bs.decode()}"
+        else:
+            output_str += f"\n{bs.decode()}"
+
         with open(post_index, "w") as index:
-            index.write(f"{json.dumps(front_matter, indent=2)}\n{bs.decode()}")
+            index.write(output_str)
 
 
 if __name__ == "__main__":
