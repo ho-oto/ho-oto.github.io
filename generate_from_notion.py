@@ -80,6 +80,24 @@ def convert_embed(bs: BeautifulSoup):
     return bs
 
 
+def convert_internal_link(bs: BeautifulSoup, base_dir, posts):
+    links = {}
+    for post in posts:
+        props: dict = post["properties"]
+        links[post["id"]] = (
+            "".join(map(lambda x: x["text"]["content"], props["title"]["title"])),
+            props["dir"]["select"]["name"],
+        )
+    for tag in bs.select("span.link_to_page"):
+        id = tag.attrs.get("id")
+        if title_dir := links.get(id):
+            title, trg_dir = title_dir
+            a = bs.new_tag("a", href=f"../{base_dir}/{trg_dir}/{id}/")
+            a.append(title)
+            tag.replace_with(a)
+    return bs
+
+
 def generate_toc(bs: BeautifulSoup):
     ids: set[str] = set()
     toc = []
@@ -151,7 +169,7 @@ def download_notion_internal(bs: BeautifulSoup, target_dir: Path):
         new_tag.string = file_name
         new_tag.attrs["class"] = list(filter(lambda c: c != "internal", tag["class"]))
         tag.replace_with(new_tag)
-        logging.info(f"FILE: notion internal file {id} is downloaded")
+        logging.info(f"FILE: notion internal file {file_id} is downloaded")
     return bs
 
 
@@ -272,6 +290,7 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
 
         post_dir.mkdir(parents=True, exist_ok=True)
         bs = convert_embed(bs)
+        bs = convert_internal_link(bs, "..", posts)
         bs = download_notion_internal(bs, post_dir)
         output_str = json.dumps(front_matter, indent=2)
         if toc:
@@ -284,10 +303,39 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
             index.write(output_str)
 
 
+def generate_about_me(id: str, posts: list[dict], contents_dir: str, author: str, secret: str):
+    ast = subprocess.run(
+        ["notion2pandoc", "-i", id, "-s", secret], capture_output=True
+    ).stdout
+    ast_dict = json.loads(ast)
+
+    html = subprocess.run(
+        ["pandoc", "--katex", "--from", "json", "--to", "html"],
+        input=ast,
+        capture_output=True,
+    ).stdout
+    bs = BeautifulSoup(html, "html.parser")
+
+    front_matter = {
+        "title": ast_dict["meta"]["title"]["c"],
+        "author": author,
+        "math": len(bs.select(".math")) != 0,
+    }
+
+    post_dir = Path(contents_dir) / "about"
+    bs = convert_embed(bs)
+    bs = convert_internal_link(bs, ".", posts)
+    bs = download_notion_internal(bs, post_dir)
+
+    with open(post_dir / "index.html", "w") as index:
+        index.write(f"{json.dumps(front_matter, indent=2)}\n{bs.decode()}")
+
 if __name__ == "__main__":
     CONTENTS_DIR = "content"
     SECRET = os.environ["NOTION_API_SECRET"]
     DB_ID = os.environ["NOTION_DB_UUID"]
     AUTHOR = os.environ["NOTION_AUTHOR"]
+    ABOUT_ME_ID = os.environ["NOTION_ABOUT_ME_ID"]
     posts = get_posts(DB_ID, SECRET)
     generate(posts, CONTENTS_DIR, AUTHOR, SECRET)
+    generate_about_me(ABOUT_ME_ID, posts, CONTENTS_DIR, AUTHOR, SECRET)
