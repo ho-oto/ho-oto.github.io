@@ -11,11 +11,11 @@
     <item>
       <title>About me</title>
       <link>https://ho-oto.github.io/about/</link>
-      <pubDate>Wed, 04 Jan 2023 00:20:06 +0900</pubDate>
+      <pubDate>Wed, 04 Jan 2023 00:30:10 +0900</pubDate>
       
       <guid>https://ho-oto.github.io/about/</guid>
       <description>Publications Hong Yang, HN, and Hosho Katsura, Symmetry-protected topological phases in spinful bosons with a flat band, Phys. Rev. Research 3, 023210 (2021) HN, Tatsuhiko Shirai, and Takashi Mori, Tensor network approach to thermalization in open quantum many-body systems, Phys. Rev. E 103, L040102 (2021) HN and Seiji Miyashita, Characterization of localized effective spins in gapped quantum spin chains, Phys. Rev. B 100, 195105 (2019) Software TensorRules.jl TensorRules.jl provides a macro @∇ which derives a custom adjoints for functions containing @tensor and @tensoropt macros. @tensor and @tensoropt are macros for tensor contraction by Einstein notation defined in TensorOperations.jl. This package are designed to use automatic differentiations for tensor network algorithms.
-ho-oto.github.io This blog. sa</description>
+ho-oto.github.io This blog. </description>
     </item>
     
     <item>
