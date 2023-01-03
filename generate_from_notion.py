@@ -95,6 +95,10 @@ def convert_internal_link(bs: BeautifulSoup, base_dir, posts):
             a = bs.new_tag("a", href=f"../{base_dir}/{trg_dir}/{id}/")
             a.append(title)
             tag.replace_with(a)
+        else:
+            tag.extract()
+    for tag in bs.select("span.unsupported"):
+        tag.extract()
     return bs
 
 
@@ -303,7 +307,9 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
             index.write(output_str)
 
 
-def generate_about_me(id: str, posts: list[dict], contents_dir: str, author: str, secret: str):
+def generate_about_me(
+    id: str, posts: list[dict], contents_dir: str, author: str, secret: str
+):
     ast = subprocess.run(
         ["notion2pandoc", "-i", id, "-s", secret], capture_output=True
     ).stdout
@@ -329,6 +335,7 @@ def generate_about_me(id: str, posts: list[dict], contents_dir: str, author: str
 
     with open(post_dir / "index.html", "w") as index:
         index.write(f"{json.dumps(front_matter, indent=2)}\n{bs.decode()}")
+
 
 if __name__ == "__main__":
     CONTENTS_DIR = "content"
