@@ -8,8 +8,8 @@
         </div>
     </div>
     <nav>
-        {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}<a id="dark-mode-toggle"
-            onclick="toggleTheme()" href=""></a>
+        {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}<span id="dark-mode-toggle"
+            onclick="toggleTheme()"></span>
         <script>
             let setTheme = mode => {
                 localStorage.setItem("theme-storage", mode);
