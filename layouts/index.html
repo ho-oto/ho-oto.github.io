@@ -36,15 +36,15 @@
 {{ $p := $.Paginator -}}
 <div class="pagination_of_index">
     {{- if $p.HasPrev -}}
-    <a href="{{ $p.Prev.URL }}" aria-label="Previous"><span aria-hidden="true">&larr;</span></a>
+    <span class="pagination_arrow"><a href="{{ $p.Prev.URL }}" aria-label="Previous" aria-hidden="true">&larr;</a></span>
     {{- else -}}
-    <span class="link_disabled" aria-hidden="true">&larr;</span>
+    <span class="pagination_arrow" aria-hidden="true"></span>
     {{- end -}}
     <span>Page {{ $p.PageNumber }} of {{ $p.TotalPages }}</span>
     {{- if $p.HasNext -}}
-    <a href="{{ $p.Next.URL }}" aria-label="Next"><span aria-hidden="true">&rarr;</span></a>
+    <span class="pagination_arrow"><a href="{{ $p.Next.URL }}" aria-label="Next" aria-hidden="true">&rarr;</a></span>
     {{- else -}}
-    <span class="link_disabled" aria-hidden="true">&rarr;</span>
+    <span class="pagination_arrow" aria-hidden="true"></span>
     {{- end -}}
 </div>
 {{- end }}
