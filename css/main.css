@@ -250,6 +250,8 @@ footer span a {
 
 .pagination_of_index a {
     border-bottom: 2px solid;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 
 .pagination_of_index span {
@@ -257,8 +259,8 @@ footer span a {
     margin-left: 0.25rem;
 }
 
-.pagination_of_index .link_disabled {
-    color: var(--color-disabled);
+.pagination_of_index .pagination_arrow {
+    min-width: 2rem;
 }
 
 /* content */
@@ -440,13 +442,4 @@ blockquote {
 
 .pagination_in_post a {
     border-bottom: 2px solid;
-}
-
-.pagination_in_post span {
-    margin-right: 0.25rem;
-    margin-left: 0.25rem;
-}
-
-.pagination_in_post .link_disabled {
-    color: var(--color-disabled);
 }
