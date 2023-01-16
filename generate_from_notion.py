@@ -5,6 +5,7 @@ import re
 import subprocess
 import urllib.parse
 from pathlib import Path
+from unicodedata import east_asian_width
 from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
@@ -275,6 +276,21 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
         ).stdout
         bs = BeautifulSoup(html, "html.parser")
 
+        summary, summary_length = "", 0
+        for char in subprocess.run(
+            ["pandoc", "--katex", "--from", "json", "--to", "plain"],
+            input=ast,
+            capture_output=True,
+        ).stdout.decode():
+            if char == "\n":
+                char = "" if summary.endswith(" / ") else " / "
+            summary += char
+            summary_length += sum(
+                (2 if east_asian_width(c) in "FWA" else 1) for c in char
+            )
+            if summary_length > 280:
+                break
+
         title = "".join(map(lambda x: x["text"]["content"], props["title"]["title"]))
         tags = list(map(lambda x: x["name"], props["tags"]["multi_select"]))
         math = len(bs.select(".math")) != 0
@@ -286,6 +302,7 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
             "title": title,
             "tags": tags,
             "author": author,
+            "summary": summary,
             "math": math,
             "date": date,
             "lastmod": lastmod,
@@ -296,7 +313,7 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
         bs = convert_embed(bs)
         bs = convert_internal_link(bs, "..", posts)
         bs = download_notion_internal(bs, post_dir)
-        output_str = json.dumps(front_matter, indent=2)
+        output_str = json.dumps(front_matter, indent=2, ensure_ascii=False)
         if toc:
             bs, bs_toc = generate_toc(bs)
             output_str += f"\n{bs_toc.decode()}\n{bs.decode()}"
