@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Sat, 31 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KaTeXの出力をクライアントサイドでSVGに変換するやつが欲しくて作ろうとしたけど実は必要なかった話</title>
+      <link>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</link>
+      <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</guid>
+      <description>結論 / v3以降の新しいMathJaxのSVG出力機能を使いましょう。以下はこの結論に至るまでの無駄な悪戦苦闘についてのメモです。 / きっかけ / 去年の1月にD論を書き終わり、LaTeXで重たい文章を書く機会はしばらく無さそうだったので、ローカル環境からTeX Liveをアンインストールすることを検討し始めた。</description>
+    </item>
+    
     <item>
       <title>About me</title>
       <link>https://ho-oto.github.io/about/</link>
