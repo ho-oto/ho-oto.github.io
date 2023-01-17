@@ -6,19 +6,19 @@
   "math": false,
   "date": "2023-01-18",
   "lastmod": "2023-01-18",
-  "notion_last_edited": "2023-01-17T15:50:00.000Z"
+  "notion_last_edited": "2023-01-17T16:19:00.000Z"
 }
-<h3>結論</h3>
+<h2>結論</h2>
 <p>v3以降の新しいMathJaxのSVG出力機能を使いましょう。以下はこの結論に至るまでの無駄な悪戦苦闘についてのメモです。</p>
-<h3>きっかけ</h3>
+<h2>きっかけ</h2>
 <p>去年の1月にD論を書き終わり、LaTeXで重たい文章を書く機会はしばらく無さそうだったので、ローカル環境からTeX
 Liveをアンインストールすることを検討し始めた。</p>
 <p>TeX
-LiveはCTANで公開されているパッケージを片っ端からローカルにインストールするので（LaTeXのライブラリはイマドキの言語のようにパッケージの依存関係を統一的な方法で明記するようにはなっていないので仕方ないのだろう）、インストールにやたらと時間がかかるし、Mac
+LiveはCTANで公開されているパッケージを片っ端からローカルにインストールするので（LaTeXのライブラリはイマドキの言語のようにパッケージの依存関係を統一的な方法で明記するようにはなっていないので仕方ないのだろう）、インストールにやたらと時間がかかるしMac
 OS用環境構築スクリプトのCIが不安定になる原因にもなっていた。</p>
-<p>数式の入った文章を書きたいことはもちろんあるが、ちょっとしたものならばNotionで十分で、少し重いものでもOverleafのようなクラウド環境を活用すれば十分だった。唯一困るのが、数式をベクター画像化するLaTeXiTのようなツールが使えなくなってしまうこと。プレゼンに数式を入れるときは、やはりこの手のツールが使えないと辛い。Webで使える数式を画像化するツールもあるが、やはりローカルで完結したものが欲しい。</p>
-<p>幸いにも<a href="https://www.mathjax.org/">MathJax</a>と<a href="https://katex.org/">KaTeX</a>というJavaScriptによるTeX数式の再実装と呼ぶべきライブラリがあるので、これらとNode.jsやDenoのようなサーバーサイドのJSランタイムを組み合わせて、LaTeX処理系に依存しないLaTeXiT的ツールを作れば良さそうという結論になった。</p>
-<h3>KaTeXを使いたい</h3>
+<p>数式の入った文章を書きたいことはもちろんあるが、ちょっとしたものならばNotionで十分で、少し重いものでもOverleafのようなクラウド環境を活用すれば十分だった。唯一困るのが数式をベクター画像化するLaTeXiTのようなツールが使えなくなってしまうこと。プレゼンに数式を入れるときはやはりこの手のツールが使えないと辛い。Webで使える数式を画像化するツールもあるがやはりローカルで完結したものが欲しい。</p>
+<p>幸いにも<a href="https://www.mathjax.org/">MathJax</a>や<a href="https://katex.org/">KaTeX</a>といったJavaScriptによるTeX数式処理の再実装と呼ぶべきライブラリがあるので、これらとNode.jsやDenoのようなサーバーサイドのJSランタイムを組み合わせて、LaTeX処理系に依存しないLaTeXiT的ツールを作れば良さそうという結論になった。</p>
+<h2>KaTeXを使いたい</h2>
 <p>以前Twitterで見かけた、MathJaxは古く行儀の悪いライブラリであるという話が印象に残っていた（ツイートされたのが2017年であることに注意してほしい）。</p>
 <p><blockquote class="twitter-tweet" data-width="550"><p dir="ltr" lang="ja">一度mathjaxを当てた箇所は真っ当なフレームワークのDOMレンダリングに回復することは不可能です</p>— mizchi (@mizchi) <a href="https://twitter.com/mizchi/status/856772327354146816?ref_src=twsrc%5Etfw">April 25, 2017</a></blockquote>
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
@@ -29,20 +29,20 @@ OS用環境構築スクリプトのCIが不安定になる原因にもなって�
 <p>実際、パフォーマンス面でもMathJaxを使っているページは不安定なことが多かった印象で、これからはKaTeXの時代なのだなと思い込んでいたのである。<a href="https://forest.watch.impress.co.jp/docs/news/1410852.html">GitHubがMathJaxを使った数式表示をサポートするという話</a>を見た時も、なぜKaTeXではないのだ？と疑問に思ったものだ。</p>
 <p>もしKaTeXにSVG出力する機能があれば話はそれで終わりだったのだが、<a href="https://github.com/KaTeX/KaTeX/issues/375">現状では存在しない</a>。なお、このIssueのおかげでMathJaxにはSVG出力機能があることを知ったのだが、前述の理由でこのときは無視していた。</p>
 <p>KaTeXではHTMLとCSSを使って数式のレイアウトを組んでいるので、その出力を画像化するにはブラウザのHTMLレンダリングエンジンが必要に思える。元々はLaTeX処理系に依存するのが嫌だからツールを作ろうという話だったのに、代わりにブラウザに依存するようになったというのはあまり面白く無い。</p>
-<h3>satoriというすごいツールがあるらしい</h3>
+<h2>satoriというすごいツールがあるらしい</h2>
 <p>そんな感じでどうしようかなぁと悩んでいた時、satoriというHTML+CSSをJS（とwasm）だけでSVGに変換するツールが公開されたことを知った。OG画像をブラウザ非依存で生成できるようにするために開発されたものとのこと。</p>
 <p><a href="https://github.com/vercel/satori">https://github.com/vercel/satori</a></p>
 <p>動作についてはLINE
 UITのポッドキャストの説明が分かりやすいが、肝となるのはyogaというレイアウトエンジンを使ってHTML+CSSのレイアウトを計算している点にある。それぞれの要素の位置が計算できれば、後はSVG化したOpenTypeフォントなどを配置していくことでページ全体のSVG画像が作れるという寸法。</p>
 <p><a class="embed" href="https://uit-inside.linecorp.com/episode/135">https://uit-inside.linecorp.com/episode/135</a></p>
 <p>これを見て、じゃあsatoriとKaTeXを適当に組み合わせれば、目当ての数式SVG化ツールが作れそうだなと思い、本格的に実装を始めてみた。</p>
-<h3>satoriが対応しているCSSはサブセット</h3>
+<h2>satoriが対応しているCSSはサブセット</h2>
 <p>ところが、satori（というかyoga）が実装しているCSSはあくまでもサブセットで<code>display</code>に関しては<code>flex</code>しか対応していない。この背景には、flexさえ対応していれば<code>display: block</code>や<code>display: inline</code>などの振る舞いは再現できる筈なのでこれで十分、という考えがあるようだ。</p>
 <p>一方、KaTeXは複雑な数式を表示するためか<code>display: table</code>とかを使いまくっているのだ。</p>
 <p><a href="https://github.com/KaTeX/KaTeX/blob/main/src/katex.less">https://github.com/KaTeX/KaTeX/blob/main/src/katex.less</a></p>
 <p>というわけで、satoriを使えば何も考えずにSVG画像化が実装できる、というわけにはいかないらしいことが分かった。問題解決のためには、少なくとも一部のレイアウトは自分で計算するしかない。KaTeXで使われているCSSの機能はかなり限定的なので、これも現実的解決手段ではあった。しかし、自分はHTMLやCSSに関してはほぼ素人であり、一部とはいえWeb標準の仕様を読み解いてレイアウト計算を実装するのはかなり厳しそうで、少なくとも空いた時間にちょいちょいやって完成という訳にはいかなくなってしまった。</p>
 <p>その後<a href="https://html2canvas.hertzen.com/">html2canvas</a>というツールもJSによるCSSの再実装のようなことをやっているというのを知り、使えるかもと思ってコードを読んでみたりもしたが、これはクライアントサイドが前提でレイアウトの計算についてはブラウザに任せていることが判明し、結局自分の目的には役に立たないことが分かった。</p>
-<h3>MathJax再訪</h3>
+<h2>MathJax再訪</h2>
 <p>やるならやるでそれなりに気合いが必要と分かったので、他の選択肢についてもう一度ちゃんと調べておこうという気分になった。とりあえずMathJaxとKaTeXの比較について改めて調査していたところ、以下のページがヒットした。</p>
 <p><a href="https://groups.google.com/g/mathjax-users/c/aboJLMb50uQ/m/Y77FexF_AwAJ">https://groups.google.com/g/mathjax-users/c/aboJLMb50uQ/m/Y77FexF_AwAJ</a></p>
 <p>ここに</p>
@@ -61,6 +61,6 @@ speed with which MathJax's final output is produced.
 <p><a class="embed" href="https://github.com/mathjax/MathJax-demos-node/blob/master/simple/tex2svg">https://github.com/mathjax/MathJax-demos-node/blob/master/simple/tex2svg</a></p>
 <p>答えは最初から目の前にあったというわけである。これをベースに自分に使いやすいように軽く改造すれば、十分実用的なものが作れそうという結論になった。</p>
 <p>なお、先ほどのmizchi氏のMathJaxをこき下ろすツイートはv3リリース前のものである。</p>
-<h3>まとめ</h3>
+<h2>まとめ</h2>
 <p>先行研究の調査は大切。思い込みを捨て、最新の1次ソースを当たるのも大切。まあ、調べる仮定でWeb技術について勉強になったことも多かったので、良しとしようかと思う。</p>
 <p>なお、このブログの数式表示については当分KaTeXのままでいいかなと思っている。ただ、一部で数式の表示が崩れているので、そのうちMathJaxの吐いたSVGを静的に埋め込むように書き直すかも。</p>
