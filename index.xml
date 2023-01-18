@@ -9,21 +9,21 @@
     <copyright>© Hayate Nakano</copyright>
     <lastBuildDate>Wed, 18 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About me</title>
+      <link>https://ho-oto.github.io/about/</link>
+      <pubDate>Wed, 18 Jan 2023 10:56:45 +0900</pubDate>
+      
+      <guid>https://ho-oto.github.io/about/</guid>
+      <description>Publications Hong Yang, HN, and Hosho Katsura, Symmetry-protected topological phases in spinful bosons with a flat band, Phys. Rev. Research 3, 023210 (2021) HN, Tatsuhiko Shirai, and Takashi Mori, Tensor network approach to thermalization in open quantum many-body systems, Phys. Rev. E 103, L040102 (2021) HN and Seiji Miyashita, Characterization of localized effective spins in gapped quantum spin chains, Phys. Rev. B 100, 195105 (2019) Software TensorRules.jl TensorRules.jl provides a macro @∇ which derives a custom adjoints for functions containing @tensor and @tensoropt macros.</description>
+    </item>
+    
+    <item>
       <title>KaTeXの出力をクライアントサイドでSVGに変換するやつが欲しくて作ろうとしたけど実は必要なかった話</title>
       <link>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</guid>
       <description>結論 / v3以降の新しいMathJaxのSVG出力機能を使いましょう。以下はこの結論に至るまでの無駄な悪戦苦闘についてのメモです。 / きっかけ / 去年の1月にD論を書き終わり、LaTeXで重たい文章を書く機会はしばらく無さそうだったので、ローカル環境からTeX Liveをアンインストールすることを検討し始めた。</description>
-    </item>
-    
-    <item>
-      <title>About me</title>
-      <link>https://ho-oto.github.io/about/</link>
-      <pubDate>Wed, 04 Jan 2023 00:30:10 +0900</pubDate>
-      
-      <guid>https://ho-oto.github.io/about/</guid>
-      <description>Publications Hong Yang, HN, and Hosho Katsura, Symmetry-protected topological phases in spinful bosons with a flat band, Phys. Rev. Research 3, 023210 (2021) HN, Tatsuhiko Shirai, and Takashi Mori, Tensor network approach to thermalization in open quantum many-body systems, Phys. Rev. E 103, L040102 (2021) HN and Seiji Miyashita, Characterization of localized effective spins in gapped quantum spin chains, Phys. Rev. B 100, 195105 (2019) Software TensorRules.jl TensorRules.jl provides a macro @∇ which derives a custom adjoints for functions containing @tensor and @tensoropt macros.</description>
     </item>
     
     <item>
