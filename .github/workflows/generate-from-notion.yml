@@ -21,9 +21,9 @@ jobs:
 
       - name: Pandoc Setup
         run: |
-          curl https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb -Lo pandoc-2.19.2-1-amd64.deb
-          sudo dpkg -i pandoc-2.19.2-1-amd64.deb
-          curl https://github.com/ho-oto/notion2pandoc/releases/download/v0.4.0/notion2pandoc-x86-64-linux.tar.gz -Lo notion2pandoc-x86-64-linux.tar.gz
+          curl https://github.com/jgm/pandoc/releases/download/3.0.1/pandoc-3.0.1-1-amd64.deb -Lo pandoc-3.0.1-1-amd64.deb
+          sudo dpkg -i pandoc-3.0.1-1-amd64.deb
+          curl https://github.com/ho-oto/notion2pandoc/releases/download/v0.5.0/notion2pandoc-x86-64-linux.tar.gz -Lo notion2pandoc-x86-64-linux.tar.gz
           tar xf notion2pandoc-x86-64-linux.tar.gz
           sudo mv notion2pandoc-x86-64-linux/notion2pandoc /usr/local/bin
           pandoc --version
