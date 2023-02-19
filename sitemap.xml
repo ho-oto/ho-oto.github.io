@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ho-oto.github.io/</loc>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</loc>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ho-oto.github.io/about/</loc>
     <lastmod>2023-01-29T19:42:11+09:00</lastmod>
-  </url><url>
-    <loc>https://ho-oto.github.io/</loc>
-    <lastmod>2023-01-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</loc>
     <lastmod>2023-01-18T00:00:00+00:00</lastmod>

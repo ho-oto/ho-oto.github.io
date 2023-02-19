@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Wed, 18 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>テキストエディタで式変形する人向けの数式マークアップのアイデア</title>
+      <link>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</guid>
+      <description>きっかけ / &lt;a href=&#34;https://twitter.com/h8t0/status/1612488271946485762&#34;&gt;https://twitter.com/h8t0/status/1612488271946485762&lt;/a&gt; / 背景 / 僕は字が汚い。手書きで式変形していると5秒前に自分で書いた記号が読めないということがしょっちゅうある。なので複雑な式変形を考えるときは手書きノートを使わず、テキストエディタ上のLaTeXコードを編集しながら考える。T</description>
+    </item>
+    
     <item>
       <title>About me</title>
       <link>https://ho-oto.github.io/about/</link>
