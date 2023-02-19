@@ -1,0 +1,86 @@
+{
+  "title": "テキストエディタで式変形する人向けの数式マークアップのアイデア",
+  "tags": [],
+  "author": "Hayate Nakano",
+  "summary": "きっかけ / https://twitter.com/h8t0/status/1612488271946485762 / 背景 / 僕は字が汚い。手書きで式変形していると5秒前に自分で書いた記号が読めないということがしょっちゅうある。なので複雑な式変形を考えるときは手書きノートを使わず、テキストエディタ上のLaTeXコードを編集しながら考える。T",
+  "math": true,
+  "date": "2023-02-19",
+  "lastmod": "2023-02-19",
+  "notion_last_edited": "2023-02-19T08:14:00.000Z"
+}
+<h2>きっかけ</h2>
+<p><blockquote class="twitter-tweet" data-width="550"><p dir="ltr" lang="ja">マークアップ言語を「人間には冗長だけど表現力が高くパースしやすい」と「人間が読み書きしやすいけど表現力は低い」の軸で考えた時、HTMLとかLaTeX文章にはMarkdownとかの対応物がいっぱいあるけど、LaTeX数式に対応する有名なのって無いよなあ、ということを考えれいた。俺が知らないだけ？</p>— ハヤテマル (@h8t0) <a href="https://twitter.com/h8t0/status/1612488271946485762?ref_src=twsrc%5Etfw">January 9, 2023</a></blockquote>
+<script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
+</p>
+<h2>背景</h2>
+<p>僕は字が汚い。手書きで式変形していると5秒前に自分で書いた記号が読めないということがしょっちゅうある。なので複雑な式変形を考えるときは手書きノートを使わず、テキストエディタ上のLaTeXコードを編集しながら考える。Twitterを見るに似たようなことをやっている人はけっこういるらしい。</p>
+<p>この方式の最大の利点はコピペが使えることである。例えば数式中の二項が打ち消し合うようなとき、行を丸ごとコピペしてから打ち消し合う部分を削除するといったことができる。数式中のパーツをコピペして使い回せるのも嬉しい。そして何より過去に書いた数式が読めないというリスクが無い。書いた数式がそのまま論文やブログなどで使えるというのも時間短縮になって嬉しい。</p>
+<p>問題点として、一見しただけでは数式のイメージが掴みにくいということがある。<span class="math inline">\frac{\sqrt{\pi}}{2}</span>という数式をLaTeXで書くと<code>\frac{\sqrt{\pi}}{2}</code>のようになるが、このコードを見て<span class="math inline">\frac{\sqrt{\pi}}{2}</span>という「形」を脳内でレンダリングするのには時間がかかってしまう。これは式変形のインスピレーションが浮かびにくくなることにも繋がる。</p>
+<p>リアルタイムで数式のプレビューができるようなツールを使うというのが一つの解決策として考えられるだろう。しかしコードのどの部分が数式のどの部分に対応するかがすぐに把握できないと、先に述べたコピペが使えるといった利点を活かしにくい。</p>
+<p>数式というものはネストした構造を持っており、これをテキストベースで表現するためには括弧や専用キーワードなどのブロックを明示する仕組みが必要になる。これらが見た目のノイズになり、コードから数式をイメージするのを妨げてしまう。ある程度複雑な数式になると括弧まみれになってしまい、書いているときはまだ良いが読んで数式をイメージするのがものすごく大変になってしまう。これは<a href="http://asciimath.org/">AsciiMath</a></p>
+<h2>アイデア</h2>
+<p>括弧まみれになるのがつらいのであれば、括弧の代わりにインデントを使う<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%95%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB">オフサイドルール</a></p>
+<p><span class="math display">\frac{a^{b^c}_{d_{e,f}}}{g}</span></p>
+<p>という数式をインデントで表現することを考えてみると</p>
+<pre class="plain text"><code>frac
+  subsup
+    a
+    sup
+      b
+      c
+    sub
+      d
+      concat
+        e
+        ,
+        f
+  g</code></pre>
+<p>または</p>
+<pre class="plain text"><code>    a
+  _
+      b
+    _
+      c
+  ^
+      d
+    ^
+        e
+        ,
+        f
+/
+  g</code></pre>
+<p>という感じになるだろうか。</p>
+<p>このままだと読みにくいので、インデントを<code>.</code>で表し、コードを1行にまとめてみる。</p>
+<pre class="plain text"><code>..a ._ ...b .._ ...c .^ ...d ..^ ....e ...., ....f / .g</code></pre>
+<p>このままだと、結合が強い部分にたくさんの<code>.</code>が入ることになり違和感があるので、数の大小を逆転させることにすると</p>
+<pre class="plain text"><code>..a ..._ .b .._ .c ...^ .d ..^ e , f ..../ ...g</code></pre>
+<p>となる。結合の優先順位が低いときには<code>.</code>を入れる、と考えると理解しやすくなった気がする。実は式の解釈を変えないように不要な<code>.</code>を削除することができて</p>
+<pre class="plain text"><code>a ._b_c .^d^e,f ../ g</code></pre>
+<p>のようになる。ここまで来ると、それなりに使いやすい文法に見えてくる。とはいえ全てをこの記法で表現するというのは辛いだろう。しかし、括弧を使ったグルーピングと併用して、ネストが深くなり括弧まみれで数式の構造が読み取りにくくなるときにそれを緩和する、といった運用ができれば案外使い所があるのではないだろうか。</p>
+<h2>具体例</h2>
+<p><span class="math display">\sum_{ \sum_{j_i,l}
+n^{k_\mathrm{ABC}+1}_{j_i-1,l} = N_l } j_i^l</span></p>
+<p>という数式を考えてみる。</p>
+<ul>
+<li>LaTeX:
+<code>\sum_{ \sum_{j_i,l} n^{k_\mathrm{ABC} +1}_{j_i -1,l} = N_l } j_i^l</code></li>
+<li>LaTeX+Unicode:
+<code>Σ_{ Σ_{j_i,l} n^{k_\mathrm{ABC}+1}_{j_i -1,l} = N_l } j_i^l</code></li>
+<li>AsciiMath:
+<code>sum_( sum_(i_j, l) n_(i_j -1,l)^(k_"ABC" +1) = N_l ) j_i^l</code>
+</li>
+<li>AsciiMath+Unicode:  <code>Σ_( Σ_(i_j, l) n_(i_j -1,l)^(k_"ABC" +1) = N_l ) j_i^l</code> </li>
+<li>dot:
+<code>Σ.._ Σ._ i_j,l . n._ i_j-1,l .^ k_"ABC"+1 .= N_l .. j_i^l</code></li>
+<li>hybrid:
+<code>Σ_( Σ._ i_j,l. n._ i_j-1,l .^ k_"ABC"+1 .= N_l ) j_i^l</code>
+</li>
+</ul>
+<p>正直何とも言えない感じだな…ドットが二連続してしまうとかえって脳への負荷がでかくなってしまう。<span class="math inline">x_{y_z}</span>みたいな数式を<code>x._y_z</code>と書いてしまえるのはいい感じな気がする。</p>
+<p>例が些か人工的すぎるのかもしれない。一応前に書いた論文の式の一部を持ってきて少し弄ったやつではあるのだけど…</p>
+<h2>まとめ</h2>
+<p>数式マークアップが括弧まみれになってしまってつらい問題をドットを用いた簡易的な記法を導入することで緩和するというアイデアが閃いた。個人的な用途で色々試してみて、実際に便利かどうか検討してみたい。</p>
+<p>適当にLaTeX数式に変換する処理系を作るのも面白いかも。その場合どうやって処理するのが良いのか気になっていたが、オフサイドルールのある言語では字句解析のときにインデントを専用のトークン<code>INDENT</code>,
+<code>DEINDENT</code>などに置き換えて、構文解析時にこれらを括弧と同様に扱えばできるようだ。</p>
+<p><iframe class="embed-card embed-blogcard" frameborder="0" scrolling="no" src="https://hatenablog-parts.com/embed?url=https%3A%2F%2Flemniscus.hatenablog.com%2Fentry%2F20101207%2F1291741646" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" title="字下げ依存構文の解析 - 再帰の反復blog"></iframe></p>
+<p>おわり。</p>
