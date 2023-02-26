@@ -40,11 +40,21 @@
 {{ if or .NextInSection .PrevInSection -}}
 <div class="pagination_in_post">
     {{ with .PrevInSection -}}
-    <a href="{{ .Permalink }}">&larr; {{ .LinkTitle }}</a>
+    <a href="{{ .Permalink }}">&larr; {{ if lt (sub (strings.Count "" .LinkTitle) 1) 16 -}}
+        {{- .LinkTitle -}}
+        {{- else -}}
+        {{- substr .LinkTitle 0 15 }}...
+    {{- end }}</a>
     {{- else -}}
     <span>No Previous Post</span>
-    {{- end }}<a href=#>&uarr;</a>{{ with .NextInSection -}}
-    <a href="{{ .Permalink }}">{{ .LinkTitle }} &rarr;</a>
+    {{- end -}}
+    <a href=#>&uarr;</a>
+    {{- with .NextInSection -}}
+    <a href="{{ .Permalink }}">{{ if lt (sub (strings.Count "" .LinkTitle) 1) 16 -}}
+        {{- .LinkTitle -}}
+        {{- else -}}
+        {{- substr .LinkTitle 0 15 }}...
+    {{- end }} &rarr;</a>
     {{- else -}}
     <span>No Next Post</span>
     {{- end }}
