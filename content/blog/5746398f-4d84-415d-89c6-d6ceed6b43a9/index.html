@@ -1,0 +1,38 @@
+{
+  "title": "BOOX Tabで英次郎を使う",
+  "tags": [],
+  "author": "Hayate Nakano",
+  "summary": "教科書や論文を読むための専用デバイスとしてBOOX Tab Ultra Cを購入したわけだが、英語論文を読むためにはやはり辞書が欲しい。しかし、BOOXは中国メーカーのタブレットなのでデフォルトで英和辞書は入っておらず、自分で用意する必要がある。 / 英辞郎のテキストデータを既に購入してあったので、これ",
+  "math": false,
+  "date": "2023-05-27",
+  "lastmod": "2023-05-27",
+  "notion_last_edited": "2023-05-27T10:58:00.000Z"
+}
+<p>教科書や論文を読むための専用デバイスとしてBOOX Tab Ultra
+Cを購入したわけだが、英語論文を読むためにはやはり辞書が欲しい。しかし、BOOXは中国メーカーのタブレットなのでデフォルトで英和辞書は入っておらず、自分で用意する必要がある。</p>
+<p><a href="https://booth.pm/ja/items/777563">英辞郎のテキストデータ</a>を既に購入してあったので、これをBOOX
+Tabが対応している辞書形式に変換して入れれば良さそう。設定画面を見ると、対応している辞書フォーマットはStarDict、MDict、BlueDict、Babylon、とのこと。</p>
+<p>調べたところ、ちょうど<a href="https://penpeen.hatenablog.com/entry/2018/06/14/190112">このブログ</a>で同じようなことをしているのだが、ここではMDictフォーマットを使用している。しかし、同じ手順をやって吐かれた辞書を読み込ませてみると、エントリの殆どが消えてしまっているようだった。中身を見て調べようと思ったが、そもそもMDictフォーマットは<a href="https://github.com/csarron/mdict-analysis/blob/master/README.md">オープンにはなっておらず</a>、MDictを吐くツールもリバースエンジニアリングの結果に基づいているっぽい？これは少し気持ち悪いので、<a href="https://github.com/huzheng001/stardict-3/blob/master/dict/doc/StarDictFileFormat">仕様がオープン</a>になっていそうなStarDict形式を使うことにした。</p>
+<h2>英辞郎データからStarDictへ</h2>
+<p>英辞郎のテキストファイルを読み込むところまでは、先に紹介したブログのコードを使わせてもらった。読み込んだデータをStarDict形式で書き出す部分は<a href="https://github.com/ilius/pyglossary">PyGlossary</a>を使うのが楽だった。メインのコードは以下のような感じ。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="im">from</span> pyglossary <span class="im">import</span> Glossary</span>
+<span id="cb1-2"><a aria-hidden="true" href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a aria-hidden="true" href="#cb1-3" tabindex="-1"></a>Glossary.init()</span>
+<span id="cb1-4"><a aria-hidden="true" href="#cb1-4" tabindex="-1"></a>glos <span class="op">=</span> Glossary()</span>
+<span id="cb1-5"><a aria-hidden="true" href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a aria-hidden="true" href="#cb1-6" tabindex="-1"></a><span class="cf">for</span> word, defi <span class="kw">in</span> mydict.items():</span>
+<span id="cb1-7"><a aria-hidden="true" href="#cb1-7" tabindex="-1"></a>	glos.addEntryObj(glos.newEntry(</span>
+<span id="cb1-8"><a aria-hidden="true" href="#cb1-8" tabindex="-1"></a>		word, defi, defiFormat<span class="op">=</span><span class="st">"m"</span>,</span>
+<span id="cb1-9"><a aria-hidden="true" href="#cb1-9" tabindex="-1"></a>	))</span>
+<span id="cb1-10"><a aria-hidden="true" href="#cb1-10" tabindex="-1"></a></span>
+<span id="cb1-11"><a aria-hidden="true" href="#cb1-11" tabindex="-1"></a>glos.setInfo(<span class="st">"title"</span>, <span class="st">"EIJIRO"</span>)</span>
+<span id="cb1-12"><a aria-hidden="true" href="#cb1-12" tabindex="-1"></a>glos.setInfo(<span class="st">"author"</span>, <span class="st">"Your Name"</span>)</span>
+<span id="cb1-13"><a aria-hidden="true" href="#cb1-13" tabindex="-1"></a>glos.write(<span class="st">"eijiro"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">"Stardict"</span>, dictzip<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<p>ここで<code>mydict</code>が読み込んだ英辞郎のデータだと思ってくれれば良い。</p>
+<p>StarDictフォーマットはdict, ifo,
+idxの3つの拡張子を持つファイルを一つのディレクトリに入れる、というものなので、上のコードを実行すると<code>eijiro.dict</code>,
+<code>eijiro.ifo</code>,
+<code>eijiro.idx</code>の3つのファイルが生成される。あとはBOOXDropあたりを使ってこれらのファイルをタブレット内の所定の場所に置けば、英辞郎が使えるようになる。</p>
+<p>ちなみに、上のコードはPyGlossaryのREADMEに書いてあるサンプルコードほぼそのままなのだが、READMEだと<code>glos.write</code>の引数として<code>"test.ifo"</code>のような拡張子つきのファイル名が指定されている。実は<code>"test.ifo"</code>のように出力先を指定すると、自動的に<code>test.dict</code>と<code>test.idx</code>の2つも同じディレクトリに吐かれる仕様になっているらしい（えぇ…）。</p>
+<p>僕は最初StarDictの仕様を真面目に読んでおらず、出力として<code>test.ifo</code>を指定しているんだし、当然生成されるファイルも<code>test.ifo</code>だけだと思い込んで上手くいかず、時間を浪費してしまった。</p>
+<p>ともあれ、これで使い勝手がだいぶ良くなったので、ガンガン使いこなしていきたい。</p>
