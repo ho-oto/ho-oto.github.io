@@ -1,3 +1,4 @@
+import html
 import json
 import logging
 import os
@@ -9,6 +10,10 @@ from unicodedata import east_asian_width
 from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
+from pygments.util import ClassNotFound
 
 logging.basicConfig(level=logging.INFO)
 
@@ -78,6 +83,25 @@ def convert_embed(bs: BeautifulSoup):
     for tag in bs.select(".embed, .video"):
         if embed_tag := get_embed_tag(tag.attrs["href"]):
             tag.replace_with(BeautifulSoup(embed_tag, "html.parser"))
+    return bs
+
+
+def convert_code_block(bs: BeautifulSoup):
+    for tag in bs.select("pre > code"):
+        if tag.parent is None:
+            continue
+        lang = tag.parent.attrs.get("class", ["text"])
+        if lang == ["plain", "text"]:
+            lang = ["text"]
+        try:
+            lexer = get_lexer_by_name("-".join(lang), stripall=True)
+        except ClassNotFound:
+            lexer = get_lexer_by_name("text")
+        code = html.unescape(tag.get_text())
+        formatter = HtmlFormatter(cssclass="dracula")
+        tag.replace_with(
+            BeautifulSoup(highlight(code, lexer, formatter), "html.parser")
+        )
     return bs
 
 
@@ -270,7 +294,7 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
         ast_dict = json.loads(ast)
 
         html = subprocess.run(
-            ["pandoc", "--katex", "--from", "json", "--to", "html"],
+            ["pandoc", "--katex", "--from", "json", "--to", "html", "--no-highlight"],
             input=ast,
             capture_output=True,
         ).stdout
@@ -311,6 +335,7 @@ def generate(posts: list[dict], contents_dir: str, author: str, secret: str):
 
         post_dir.mkdir(parents=True, exist_ok=True)
         bs = convert_embed(bs)
+        bs = convert_code_block(bs)
         bs = convert_internal_link(bs, "..", posts)
         bs = download_notion_internal(bs, post_dir)
         output_str = json.dumps(front_matter, indent=2, ensure_ascii=False)
@@ -333,7 +358,7 @@ def generate_about_me(
     ast_dict = json.loads(ast)
 
     html = subprocess.run(
-        ["pandoc", "--katex", "--from", "json", "--to", "html"],
+        ["pandoc", "--katex", "--from", "json", "--to", "html", "--no-highlight"],
         input=ast,
         capture_output=True,
     ).stdout
@@ -347,6 +372,7 @@ def generate_about_me(
 
     post_dir = Path(contents_dir) / "about"
     bs = convert_embed(bs)
+    bs = convert_code_block(bs)
     bs = convert_internal_link(bs, ".", posts)
     bs = download_notion_internal(bs, post_dir)
 

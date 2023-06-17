@@ -15,19 +15,21 @@ Tabが対応している辞書形式に変換して入れれば良さそう。�
 <p>調べたところ、ちょうど<a href="https://penpeen.hatenablog.com/entry/2018/06/14/190112">このブログ</a>で同じようなことをしているのだが、ここではMDictフォーマットを使用している。しかし、同じ手順をやって吐かれた辞書を読み込ませてみると、エントリの殆どが消えてしまっているようだった。中身を見て調べようと思ったが、そもそもMDictフォーマットは<a href="https://github.com/csarron/mdict-analysis/blob/master/README.md">オープンにはなっておらず</a>、MDictを吐くツールもリバースエンジニアリングの結果に基づいているっぽい？これは少し気持ち悪いので、<a href="https://github.com/huzheng001/stardict-3/blob/master/dict/doc/StarDictFileFormat">仕様がオープン</a>になっていそうなStarDict形式を使うことにした。</p>
 <h2>英辞郎データからStarDictへ</h2>
 <p>英辞郎のテキストファイルを読み込むところまでは、先に紹介したブログのコードを使わせてもらった。読み込んだデータをStarDict形式で書き出す部分は<a href="https://github.com/ilius/pyglossary">PyGlossary</a>を使うのが楽だった。メインのコードは以下のような感じ。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="im">from</span> pyglossary <span class="im">import</span> Glossary</span>
-<span id="cb1-2"><a aria-hidden="true" href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a aria-hidden="true" href="#cb1-3" tabindex="-1"></a>Glossary.init()</span>
-<span id="cb1-4"><a aria-hidden="true" href="#cb1-4" tabindex="-1"></a>glos <span class="op">=</span> Glossary()</span>
-<span id="cb1-5"><a aria-hidden="true" href="#cb1-5" tabindex="-1"></a></span>
-<span id="cb1-6"><a aria-hidden="true" href="#cb1-6" tabindex="-1"></a><span class="cf">for</span> word, defi <span class="kw">in</span> mydict.items():</span>
-<span id="cb1-7"><a aria-hidden="true" href="#cb1-7" tabindex="-1"></a>	glos.addEntryObj(glos.newEntry(</span>
-<span id="cb1-8"><a aria-hidden="true" href="#cb1-8" tabindex="-1"></a>		word, defi, defiFormat<span class="op">=</span><span class="st">"m"</span>,</span>
-<span id="cb1-9"><a aria-hidden="true" href="#cb1-9" tabindex="-1"></a>	))</span>
-<span id="cb1-10"><a aria-hidden="true" href="#cb1-10" tabindex="-1"></a></span>
-<span id="cb1-11"><a aria-hidden="true" href="#cb1-11" tabindex="-1"></a>glos.setInfo(<span class="st">"title"</span>, <span class="st">"EIJIRO"</span>)</span>
-<span id="cb1-12"><a aria-hidden="true" href="#cb1-12" tabindex="-1"></a>glos.setInfo(<span class="st">"author"</span>, <span class="st">"Your Name"</span>)</span>
-<span id="cb1-13"><a aria-hidden="true" href="#cb1-13" tabindex="-1"></a>glos.write(<span class="st">"eijiro"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">"Stardict"</span>, dictzip<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<pre class="python"><div class="dracula"><pre><span></span><span class="kn">from</span> <span class="nn">pyglossary</span> <span class="kn">import</span> <span class="n">Glossary</span>
+
+<span class="n">Glossary</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">glos</span> <span class="o">=</span> <span class="n">Glossary</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">defi</span> <span class="ow">in</span> <span class="n">mydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="n">glos</span><span class="o">.</span><span class="n">addEntryObj</span><span class="p">(</span><span class="n">glos</span><span class="o">.</span><span class="n">newEntry</span><span class="p">(</span>
+		<span class="n">word</span><span class="p">,</span> <span class="n">defi</span><span class="p">,</span> <span class="n">defiFormat</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span>
+	<span class="p">))</span>
+
+<span class="n">glos</span><span class="o">.</span><span class="n">setInfo</span><span class="p">(</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"EIJIRO"</span><span class="p">)</span>
+<span class="n">glos</span><span class="o">.</span><span class="n">setInfo</span><span class="p">(</span><span class="s2">"author"</span><span class="p">,</span> <span class="s2">"Your Name"</span><span class="p">)</span>
+<span class="n">glos</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"eijiro"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"Stardict"</span><span class="p">,</span> <span class="n">dictzip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</pre>
 <p>ここで<code>mydict</code>が読み込んだ英辞郎のデータだと思ってくれれば良い。</p>
 <p>StarDictフォーマットはdict, ifo,
 idxの3つの拡張子を持つファイルを一つのディレクトリに入れる、というものなので、上のコードを実行すると<code>eijiro.dict</code>,
