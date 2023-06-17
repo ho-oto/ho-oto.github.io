@@ -14,10 +14,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
       - name: Python Setup
         run: |
-          pipx install poetry==1.2.1
-          poetry install --no-root --no-dev
+          pip install -r requirements.lock
 
       - name: Pandoc Setup
         run: |
@@ -35,7 +39,7 @@ jobs:
           hugo-version: "latest"
 
       - name: generate
-        run: ./.venv/bin/python generate_from_notion.py
+        run: python generate_from_notion.py
         env:
           NOTION_DB_UUID: ${{ secrets.NOTION_DB_UUID }}
           NOTION_API_SECRET: ${{ secrets.NOTION_API_SECRET }}
