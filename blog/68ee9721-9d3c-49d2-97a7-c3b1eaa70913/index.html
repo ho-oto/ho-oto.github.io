@@ -90,7 +90,7 @@
 <p>括弧まみれになるのがつらいのであれば、括弧の代わりにインデントを使う<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%95%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB">オフサイドルール</a>を採用するというのはどうだろうか。試しに</p>
 <p><span class="math display">\frac{a^{b^c}_{d_{e,f}}}{g}</span></p>
 <p>という数式をインデントで表現することを考えてみると</p>
-<pre class="plain text"><code>frac
+<pre class="plain text"><div class="dracula"><pre><span></span>frac
   subsup
     a
     sup
@@ -102,9 +102,11 @@
         e
         ,
         f
-  g</code></pre>
+  g
+</pre></div>
+</pre>
 <p>または</p>
-<pre class="plain text"><code>    a
+<pre class="plain text"><div class="dracula"><pre><span></span>a
   _
       b
     _
@@ -116,14 +118,22 @@
         ,
         f
 /
-  g</code></pre>
+  g
+</pre></div>
+</pre>
 <p>という感じになるだろうか。</p>
 <p>このままだと読みにくいので、インデントを<code>.</code>で表し、コードを1行にまとめてみる。</p>
-<pre class="plain text"><code>..a ._ ...b .._ ...c .^ ...d ..^ ....e ...., ....f / .g</code></pre>
+<pre class="plain text"><div class="dracula"><pre><span></span>..a ._ ...b .._ ...c .^ ...d ..^ ....e ...., ....f / .g
+</pre></div>
+</pre>
 <p>このままだと、結合が強い部分にたくさんの<code>.</code>が入ることになり違和感があるので、数の大小を逆転させることにすると</p>
-<pre class="plain text"><code>..a ..._ .b .._ .c ...^ .d ..^ e , f ..../ ...g</code></pre>
+<pre class="plain text"><div class="dracula"><pre><span></span>..a ..._ .b .._ .c ...^ .d ..^ e , f ..../ ...g
+</pre></div>
+</pre>
 <p>となる。結合の優先順位が低いときには<code>.</code>を入れる、と考えると理解しやすくなった気がする。実は式の解釈を変えないように不要な<code>.</code>を削除することができて</p>
-<pre class="plain text"><code>a ._b_c .^d^e,f ../ g</code></pre>
+<pre class="plain text"><div class="dracula"><pre><span></span>a ._b_c .^d^e,f ../ g
+</pre></div>
+</pre>
 <p>のようになる。ここまで来ると、それなりに使いやすい文法に見えてくる。とはいえ全てをこの記法で表現するというのは辛いだろう。しかし、括弧を使ったグルーピングと併用して、ネストが深くなり括弧まみれで数式の構造が読み取りにくくなるときにそれを緩和する、といった運用ができれば案外使い所があるのではないだろうか。</p>
 <h2>具体例</h2>
 <p><span class="math display">\sum_{ \sum_{j_i,l}
