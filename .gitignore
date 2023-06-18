@@ -10,3 +10,4 @@ hugo.linux
 /.hugo_build.lock
 
 .env
+.vscode
