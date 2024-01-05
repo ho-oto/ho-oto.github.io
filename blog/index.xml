@@ -7,78 +7,70 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Sun, 19 Jun 2022 00:10:33 +0900</lastBuildDate><atom:link href="https://ho-oto.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jun 2022 00:10:33 +0900</lastBuildDate>
+    <atom:link href="https://ho-oto.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2024年の目標</title>
+      <link>https://ho-oto.github.io/blog/f90bade4-74af-4dfa-af1d-1758fd4af969/</link>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ho-oto.github.io/blog/f90bade4-74af-4dfa-af1d-1758fd4af969/</guid>
+      <description>2023年は、30代に到達してしまったという受動的なイベントを除くとかなり何もない年であった。無理が効く年齢がどんどん終わりに向かっていることも考えると、1年を無為に過ごすというのは非常に良く無い。2024年こそはアクティブに色々とやっていきたい。 / というわけで2024年の目標を書いていく。 /</description>
+    </item>
     <item>
       <title>BOOX Tabで英次郎を使う</title>
       <link>https://ho-oto.github.io/blog/5746398f-4d84-415d-89c6-d6ceed6b43a9/</link>
       <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/5746398f-4d84-415d-89c6-d6ceed6b43a9/</guid>
       <description>教科書や論文を読むための専用デバイスとしてBOOX Tab Ultra Cを購入したわけだが、英語論文を読むためにはやはり辞書が欲しい。しかし、BOOXは中国メーカーのタブレットなのでデフォルトで英和辞書は入っておらず、自分で用意する必要がある。 / 英辞郎のテキストデータを既に購入してあったので、これ</description>
     </item>
-    
     <item>
       <title>BOOX Tab Ultra C</title>
       <link>https://ho-oto.github.io/blog/6b9c2685-f3ba-4de3-ba1b-c82c05a8a985/</link>
       <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/6b9c2685-f3ba-4de3-ba1b-c82c05a8a985/</guid>
       <description>BOOX Tab Ultra Cを注文してしまった。 / 使っているiPad Proのバッテリーがだいぶへたって来たのと、教科書読んだり論文読んだりするにはやっぱり電子ペーパーのほうが良いな…と思ったので。 / 電子ペーパー系のデバイスの良さは知っていたつもりだが、論文読む時に色が出ないのが問題になるケースがそ</description>
     </item>
-    
     <item>
       <title>テキストエディタで式変形する人向けの数式マークアップのアイデア</title>
       <link>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</guid>
       <description>きっかけ / &lt;a href=&#34;https://twitter.com/h8t0/status/1612488271946485762&#34;&gt;https://twitter.com/h8t0/status/1612488271946485762&lt;/a&gt; / 背景 / 僕は字が汚い。手書きで式変形していると5秒前に自分で書いた記号が読めないということがしょっちゅうある。なので複雑な式変形を考えるときは手書きノートを使わず、テキストエディタ上のLaTeXコードを編集しながら考える。T</description>
     </item>
-    
     <item>
       <title>KaTeXの出力をクライアントサイドでSVGに変換するやつが欲しくて作ろうとしたけど実は必要なかった話</title>
       <link>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</guid>
       <description>結論 / v3以降の新しいMathJaxのSVG出力機能を使いましょう。以下はこの結論に至るまでの無駄な悪戦苦闘についてのメモです。 / きっかけ / 去年の1月にD論を書き終わり、LaTeXで重たい文章を書く機会はしばらく無さそうだったので、ローカル環境からTeX Liveをアンインストールすることを検討し始めた。</description>
     </item>
-    
     <item>
       <title>2022のまとめ</title>
       <link>https://ho-oto.github.io/blog/99181035-c474-48ec-a756-f339ffff4b18/</link>
       <pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/99181035-c474-48ec-a756-f339ffff4b18/</guid>
       <description>2022も終わるので今年の総括をしていきたい。思い返すと案外色々あった。 / 2022にあったこと / 博士号を取った / 今年の2月までは博論の発表をしたり修正をしたりしていた。色々と追い詰められていたのもあってあまり記憶もないのだが、無事に物理学で博士（理学）になった。博論のメイン結果がまだ論文</description>
     </item>
-    
     <item>
       <title>エアロバイク注文した</title>
       <link>https://ho-oto.github.io/blog/82669a5b-9fbd-4f16-82ea-2ea914b22591/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/82669a5b-9fbd-4f16-82ea-2ea914b22591/</guid>
       <description>結局エアロバイクを注文してしまった。 / 買ったのはFITBOX LITE。速度計ついているヤツと悩んだが、3万円くらい差があるのはデカいなと思ってLITEで十分と判断した。 / &lt;a href=&#34;https://www.amazon.co.jp/gp/product/B089CTFHPP/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&amp;amp;psc=1&#34;&gt;https://www.amazon.co.jp/gp/product/B089CTFHPP/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&amp;amp;psc=1&lt;/a&gt; / 速度計などはついていないの</description>
     </item>
-    
     <item>
       <title>スマートウォッチ検討</title>
       <link>https://ho-oto.github.io/blog/b6138c1d-519b-44d1-9955-c18133773d84/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/b6138c1d-519b-44d1-9955-c18133773d84/</guid>
       <description>Google Pixel Watchが出たら買おうと前々から思っていたのだが、いざ出てみると少し微妙なので悩み始めた。今は安物のミーバンドを持ってはいるが、暑くてランニングしなくなったタイミングで付ける習慣も無くなってしまった。 / 要件 / まず、当分の間はiPhoneを買うつもりはないので（会社支給の携帯は</description>
     </item>
-    
     <item>
       <title>ブログを作り直した</title>
       <link>https://ho-oto.github.io/blog/3e566e4f-65bc-440e-a1c4-adf111c6edee/</link>
       <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/3e566e4f-65bc-440e-a1c4-adf111c6edee/</guid>
       <description>このブログを作ったときは、GithubのissueをCMSとして使うような仕組みにしていたのだが、思っていた以上に管理がやりにくかったので、Notionを使うように変更した。ベッドで寝転がりながら編集したりすることを考えると、アプリの完成度が高いNotionが最適解かなという気がしたので。 / NotionをCMSに使</description>
     </item>
-    
   </channel>
 </rss>

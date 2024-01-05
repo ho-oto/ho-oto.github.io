@@ -7,150 +7,126 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Sun, 18 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ho-oto.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2024年の目標</title>
+      <link>https://ho-oto.github.io/blog/f90bade4-74af-4dfa-af1d-1758fd4af969/</link>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ho-oto.github.io/blog/f90bade4-74af-4dfa-af1d-1758fd4af969/</guid>
+      <description>2023年は、30代に到達してしまったという受動的なイベントを除くとかなり何もない年であった。無理が効く年齢がどんどん終わりに向かっていることも考えると、1年を無為に過ごすというのは非常に良く無い。2024年こそはアクティブに色々とやっていきたい。 / というわけで2024年の目標を書いていく。 /</description>
+    </item>
     <item>
       <title>2023-06-18</title>
       <link>https://ho-oto.github.io/log/d85035d0-1460-425c-a578-d3136e7c7ee9/</link>
       <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/log/d85035d0-1460-425c-a578-d3136e7c7ee9/</guid>
       <description>なんかブログのシンタックスハイライトが機能してなかったので、pygmentsを使って自前でやるようにした。 / 残りの時間はずっとボードゲームアリーナでアーク・ノヴァで遊んでいた。なかなかに中毒性がある。 /</description>
     </item>
-    
     <item>
       <title>BOOX Tabで英次郎を使う</title>
       <link>https://ho-oto.github.io/blog/5746398f-4d84-415d-89c6-d6ceed6b43a9/</link>
       <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/5746398f-4d84-415d-89c6-d6ceed6b43a9/</guid>
       <description>教科書や論文を読むための専用デバイスとしてBOOX Tab Ultra Cを購入したわけだが、英語論文を読むためにはやはり辞書が欲しい。しかし、BOOXは中国メーカーのタブレットなのでデフォルトで英和辞書は入っておらず、自分で用意する必要がある。 / 英辞郎のテキストデータを既に購入してあったので、これ</description>
     </item>
-    
     <item>
       <title>BOOX Tab Ultra C</title>
       <link>https://ho-oto.github.io/blog/6b9c2685-f3ba-4de3-ba1b-c82c05a8a985/</link>
       <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/6b9c2685-f3ba-4de3-ba1b-c82c05a8a985/</guid>
       <description>BOOX Tab Ultra Cを注文してしまった。 / 使っているiPad Proのバッテリーがだいぶへたって来たのと、教科書読んだり論文読んだりするにはやっぱり電子ペーパーのほうが良いな…と思ったので。 / 電子ペーパー系のデバイスの良さは知っていたつもりだが、論文読む時に色が出ないのが問題になるケースがそ</description>
     </item>
-    
     <item>
       <title>About me</title>
       <link>https://ho-oto.github.io/about/</link>
       <pubDate>Sun, 19 Feb 2023 17:37:51 +0900</pubDate>
-      
       <guid>https://ho-oto.github.io/about/</guid>
       <description>Publications Hong Yang, HN, and Hosho Katsura, Symmetry-protected topological phases in spinful bosons with a flat band, Phys. Rev. Research 3, 023210 (2021) HN, Tatsuhiko Shirai, and Takashi Mori, Tensor network approach to thermalization in open quantum many-body systems, Phys. Rev. E 103, L040102 (2021) HN and Seiji Miyashita, Characterization of localized effective spins in gapped quantum spin chains, Phys. Rev. B 100, 195105 (2019) Software TensorRules.jl TensorRules.jl provides a macro @∇ which derives a custom adjoints for functions containing @tensor and @tensoropt macros.</description>
     </item>
-    
     <item>
       <title>テキストエディタで式変形する人向けの数式マークアップのアイデア</title>
       <link>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/68ee9721-9d3c-49d2-97a7-c3b1eaa70913/</guid>
       <description>きっかけ / &lt;a href=&#34;https://twitter.com/h8t0/status/1612488271946485762&#34;&gt;https://twitter.com/h8t0/status/1612488271946485762&lt;/a&gt; / 背景 / 僕は字が汚い。手書きで式変形していると5秒前に自分で書いた記号が読めないということがしょっちゅうある。なので複雑な式変形を考えるときは手書きノートを使わず、テキストエディタ上のLaTeXコードを編集しながら考える。T</description>
     </item>
-    
     <item>
       <title>KaTeXの出力をクライアントサイドでSVGに変換するやつが欲しくて作ろうとしたけど実は必要なかった話</title>
       <link>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/299eab9c-0b4f-4eda-9c67-96882211d545/</guid>
       <description>結論 / v3以降の新しいMathJaxのSVG出力機能を使いましょう。以下はこの結論に至るまでの無駄な悪戦苦闘についてのメモです。 / きっかけ / 去年の1月にD論を書き終わり、LaTeXで重たい文章を書く機会はしばらく無さそうだったので、ローカル環境からTeX Liveをアンインストールすることを検討し始めた。</description>
     </item>
-    
     <item>
       <title>2022のまとめ</title>
       <link>https://ho-oto.github.io/blog/99181035-c474-48ec-a756-f339ffff4b18/</link>
       <pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/99181035-c474-48ec-a756-f339ffff4b18/</guid>
       <description>2022も終わるので今年の総括をしていきたい。思い返すと案外色々あった。 / 2022にあったこと / 博士号を取った / 今年の2月までは博論の発表をしたり修正をしたりしていた。色々と追い詰められていたのもあってあまり記憶もないのだが、無事に物理学で博士（理学）になった。博論のメイン結果がまだ論文</description>
     </item>
-    
     <item>
       <title>2022-10-26</title>
       <link>https://ho-oto.github.io/log/bb459359-fdab-47b5-b32a-2cb3e941f06e/</link>
       <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/log/bb459359-fdab-47b5-b32a-2cb3e941f06e/</guid>
       <description>とりあえず購入してから4日くらいは毎日FITBOXを漕いでいる。せっかく90分連続で漕げるので、もっとゆっくり漕いだほうが良いのかもしれん。 / FITBOXを漕ぎながら積読を解消していこう、ということで 『計算できるもの、できないもの』を読み始めた。僕がこれまで概念を習得してきたとき、大抵はコレに</description>
     </item>
-    
     <item>
       <title>エアロバイク注文した</title>
       <link>https://ho-oto.github.io/blog/82669a5b-9fbd-4f16-82ea-2ea914b22591/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/82669a5b-9fbd-4f16-82ea-2ea914b22591/</guid>
       <description>結局エアロバイクを注文してしまった。 / 買ったのはFITBOX LITE。速度計ついているヤツと悩んだが、3万円くらい差があるのはデカいなと思ってLITEで十分と判断した。 / &lt;a href=&#34;https://www.amazon.co.jp/gp/product/B089CTFHPP/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&amp;amp;psc=1&#34;&gt;https://www.amazon.co.jp/gp/product/B089CTFHPP/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&amp;amp;psc=1&lt;/a&gt; / 速度計などはついていないの</description>
     </item>
-    
     <item>
       <title>スマートウォッチ検討</title>
       <link>https://ho-oto.github.io/blog/b6138c1d-519b-44d1-9955-c18133773d84/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/b6138c1d-519b-44d1-9955-c18133773d84/</guid>
       <description>Google Pixel Watchが出たら買おうと前々から思っていたのだが、いざ出てみると少し微妙なので悩み始めた。今は安物のミーバンドを持ってはいるが、暑くてランニングしなくなったタイミングで付ける習慣も無くなってしまった。 / 要件 / まず、当分の間はiPhoneを買うつもりはないので（会社支給の携帯は</description>
     </item>
-    
     <item>
       <title>ブログを作り直した</title>
       <link>https://ho-oto.github.io/blog/3e566e4f-65bc-440e-a1c4-adf111c6edee/</link>
       <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/3e566e4f-65bc-440e-a1c4-adf111c6edee/</guid>
       <description>このブログを作ったときは、GithubのissueをCMSとして使うような仕組みにしていたのだが、思っていた以上に管理がやりにくかったので、Notionを使うように変更した。ベッドで寝転がりながら編集したりすることを考えると、アプリの完成度が高いNotionが最適解かなという気がしたので。 / NotionをCMSに使</description>
     </item>
-    
     <item>
       <title>sample post</title>
       <link>https://ho-oto.github.io/note/06a3b25d-f9b8-4534-8661-af0039d245a9/</link>
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/note/06a3b25d-f9b8-4534-8661-af0039d245a9/</guid>
       <description>Lorem ipsum dolor sit &lt;del&gt;am~~~~et&lt;/del&gt;, consectetur adipiscing elit, / -   sed do do /     aaa /     -   eiusmod /     -   eiusmod /     -   eiusmod /     -   eiusmod /         -   eiusmod /     1.  tempor /     2.  incididunt ut labore /         1.  et dolore /             1.   /</description>
     </item>
-    
     <item>
       <title>2022-07-21</title>
       <link>https://ho-oto.github.io/log/09f56cd7-8375-479a-aacc-79d54380ada6/</link>
       <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/log/09f56cd7-8375-479a-aacc-79d54380ada6/</guid>
       <description>やったこと / 月曜日からrustlingsをちびちび解いて、とりあえず全部解いた。一部、出題者の意図を正しく汲めているか不安な問題もあるけど。 / GitHubでスターをつけて満足してしまったハンズオンが無限に存在するので、真面目に向き合っていきたい。次はWrite yourself a Git!をなんか別言語で実装した</description>
     </item>
-    
     <item>
       <title>2022-07-02</title>
       <link>https://ho-oto.github.io/log/79c76885-5d41-4f54-95a7-e3c950024b23/</link>
       <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/log/79c76885-5d41-4f54-95a7-e3c950024b23/</guid>
       <description>気分が憂鬱でしんどい日だった / やったこと / 院に行って薬をもらった。よりによって15:00に予約をとったので、一日で一番暑い時間に外出する羽目になってしまった。 / これだけだと外出し損なので、映画館に行ってゆるキャン△の映画を見た。眼鏡を忘れたので最前席に座ったが、スクリーンの上のほうは</description>
     </item>
-    
     <item>
       <title>2022-07-01</title>
       <link>https://ho-oto.github.io/log/1710de01-e0e1-462b-b65e-9485288a7799/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/log/1710de01-e0e1-462b-b65e-9485288a7799/</guid>
       <description>7月に入ったしいい加減にこの日記をちゃんと稼働させたい。 / やったこと / WSL2用の環境構成スクリプトを整理していた。GitHub ActionsでCIを回してはいたけど、WSL上じゃないと使えないコマンドがあったり、CI上ではプリインストールされているソフトウェアがたくさんあって挙動が変わったりと、最後は</description>
     </item>
-    
     <item>
       <title>2022-06-23</title>
       <link>https://ho-oto.github.io/log/a37a4753-21fc-466e-b71c-1ae3d49063bb/</link>
       <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/log/a37a4753-21fc-466e-b71c-1ae3d49063bb/</guid>
       <description>入社式以来の物理出社をした。自分がいかに混んでいる電車というものが嫌いかを再認識した。異常に疲れてしまったので、とくに何の学習もせずに寝る。 /</description>
     </item>
-    
   </channel>
 </rss>

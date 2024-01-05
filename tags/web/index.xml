@@ -7,24 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© Hayate Nakano</copyright>
-    <lastBuildDate>Fri, 14 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ho-oto.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ho-oto.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ブログを作り直した</title>
       <link>https://ho-oto.github.io/blog/3e566e4f-65bc-440e-a1c4-adf111c6edee/</link>
       <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/blog/3e566e4f-65bc-440e-a1c4-adf111c6edee/</guid>
       <description>このブログを作ったときは、GithubのissueをCMSとして使うような仕組みにしていたのだが、思っていた以上に管理がやりにくかったので、Notionを使うように変更した。ベッドで寝転がりながら編集したりすることを考えると、アプリの完成度が高いNotionが最適解かなという気がしたので。 / NotionをCMSに使</description>
     </item>
-    
     <item>
       <title>sample post</title>
       <link>https://ho-oto.github.io/note/06a3b25d-f9b8-4534-8661-af0039d245a9/</link>
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://ho-oto.github.io/note/06a3b25d-f9b8-4534-8661-af0039d245a9/</guid>
       <description>Lorem ipsum dolor sit &lt;del&gt;am~~~~et&lt;/del&gt;, consectetur adipiscing elit, / -   sed do do /     aaa /     -   eiusmod /     -   eiusmod /     -   eiusmod /     -   eiusmod /         -   eiusmod /     1.  tempor /     2.  incididunt ut labore /         1.  et dolore /             1.   /</description>
     </item>
-    
   </channel>
 </rss>
